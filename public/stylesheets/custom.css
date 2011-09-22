@@ -190,3 +190,11 @@ div.field, div.actions {
   list-style: square;
 }
 
+/* Index user*/
+ul.users{
+	margin-top: 1em;
+}
+
+.users li{
+	list_style: none;
+}
