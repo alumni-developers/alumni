@@ -15,8 +15,26 @@
   </tr>
   <tr>
     <td class="sidebar round">
-    <strong>Preferències</strong><br />
+    <strong>Estades a l'extranger'</strong><br />
+    <%= @user.abroad %>
+    </td>
+  </tr>
+  <tr>
+    <td class="sidebar round">
+    <strong>Experiència Laboral</strong><br />
+    <%= @user.work %>
+    </td>
+  </tr>
+  <tr>
+    <td class="sidebar round">
+    <strong>Interessos</strong><br />
     <%= @user.likes %>
+    </td>
+  </tr>
+  <tr>
+    <td class="sidebar round">
+    <strong>Perfil Linkedin</strong><br />
+    <%= link_to "Veure perfil", @user.linkedin, :target => '_blank' %>
     </td>
   </tr>
 </table>

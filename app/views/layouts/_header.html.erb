@@ -6,7 +6,7 @@
       <% if signed_in? %>
 	  <li><%= link_to "Usuaris", users_path %></li>
       <li><%= link_to "Perfil", current_user %></li>
-	  <li><%= link_to "Preferències",edit_user_path(current_user) %></li>
+	  <li><%= link_to "Editar",edit_user_path(current_user) %></li>
       <% end %>
       <li><%= link_to "Ajuda", help_path %></li>
       <% if signed_in? %>

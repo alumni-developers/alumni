@@ -12,12 +12,15 @@
 #  degree             :string(255)
 #  year               :integer
 #  likes              :text
+#  linkedin           :string(255)
+#  abroad             :text
+#  work               :text
 #
 
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :degree, :year, :likes
+  attr_accessible :name, :email, :password, :password_confirmation, :degree, :year, :likes, :linkedin, :abroad, :work
   attr_accessor :password
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -12,6 +12,9 @@
 #  degree             :string(255)
 #  year               :integer
 #  likes              :text
+#  linkedin           :string(255)
+#  abroad             :text
+#  work               :text
 #
 
 require 'test_helper'

@@ -1,4 +1,4 @@
-<h1>Edit user</h1>
+<h1>Editar usuari</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
@@ -63,9 +63,26 @@
     <%= f.text_area :likes %>
   </div>
 
+  <div class="field">
+    <%= f.label :work, "Experiència Laboral" %><br />
+    <%= f.text_area :work %>
+  </div>
+
+  <div class="field">
+    <%= f.label :abroad, "Estades a l'extranger" %><br />
+    <%= f.text_area :abroad %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :linkedin, "Enllaç a perfil del Linkedin" %><br />
+    Es troba situat al apartat "Perfil", just abans de les seccions del currículum. <br />
+    <%= f.url_field :linkedin %>
+  </div>
+
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Actualitzar" %>
   </div>
 <% end %>
 
