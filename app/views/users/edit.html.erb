@@ -3,21 +3,67 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :name, "Nom" %><br />
+    <%= f.label :name, "Nom i Cognoms" %><br />
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
+
   <div class="field">
     <%= f.label :password_confirmation, "Confirmació" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+
+  <div class="field">
+   <%= f.label :degree, "Titulació" %><br />
+
+   <%= radio_button("user", "degree", "Teleco+Mates") %>
+   <%= label_tag(:tm, "Teleco+Mates") %>
+
+   <%= radio_button("user", "degree", "Teleco+Info") %>
+   <%= label_tag(:ti, "Teleco+Info") %>
+
+   <%= radio_button("user", "degree", "Teleco+Industrials") %>
+   <%= label_tag(:tind, "Teleco+Industrials") %><br/>
+
+   <%= radio_button("user", "degree", "Camins+Info") %>
+   <%= label_tag(:ci, "Camins+Info") %>
+
+   <%= radio_button("user", "degree", "Camins+Mates") %>
+   <%= label_tag(:cm, "Camins+Mates") %>
+
+   <%= radio_button("user", "degree", "Camins+Industrials") %>
+   <%= label_tag(:cind, "Camins+Industrials") %><br/>
+
+   <%= radio_button("user", "degree", "Info+Industrials") %>
+   <%= label_tag(:ii, "Info+Industrials") %>
+
+   <%= radio_button("user", "degree", "Industrials+Mates") %>
+   <%= label_tag(:indm, "Industrials+Mates") %>
+
+   <%= radio_button("user", "degree", "Info+Mates") %>
+   <%= label_tag(:im, "Info+Mates") %>
+  </div>
+
+   <div class="field">
+    <%= f.label :year, "Any de graduació" %><br />
+    <%= select("user", "year", {"No graduat"=>"0", "2005"=>"2005", "2006"=>"2006", "2007"=>"2007","2008"=>"2008","2009"=>"2009","2010"=>"2010","2011"=>"2011"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :likes, "Interessos" %><br />
+    <%= f.text_area :likes %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

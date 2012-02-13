@@ -7,8 +7,14 @@
       </h1>
     </td>
     <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <strong>Titulació</strong> <br /> <%= @user.degree %><br />
+      <strong>Any Graduació</strong> <br /> <%= @user.year %>
+    </td>
+  </tr>
+  <tr>
+    <td class="sidebar round">
+    <strong>Preferències</strong><br />
+    <%= @user.likes %>
     </td>
   </tr>
 </table>
