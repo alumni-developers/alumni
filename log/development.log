@@ -4659,3 +4659,4 @@ Migrating to MoreInformationToUsers (20120213165401)
   [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
   [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
 DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/mingot/Projectes/rails/alumni/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/mingot/Projectes/rails/alumni/config/environment.rb:5)
