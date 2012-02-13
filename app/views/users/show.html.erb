@@ -5,10 +5,12 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+
     </td>
     <td class="sidebar round">
       <strong>Titulació</strong> <br /> <%= @user.degree %><br />
-      <strong>Any Graduació</strong> <br /> <%= @user.year %>
+      <strong>Any Graduació</strong> <br /> <%= @user.year %><br />
+      <strong>email</strong> <br /> <%= @user.email %><br />
     </td>
   </tr>
   <tr>
