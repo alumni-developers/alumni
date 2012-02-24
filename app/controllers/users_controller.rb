@@ -1,22 +1,23 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only=>[ :edit, :update, :update]
-  before_filter :correct_user, :only=>[ :edit, :update] 
+  before_filter :authenticate
+  before_filter :correct_user, :only => [:edit, :update] 
+  before_filter :admin_user,   :only => [:create, :new, :destroy]
   
   def create
-	@user = User.new(params[ :user])
-	if @user.save
-		sign_in @user
-		flash[:success]="Benvingut al CFIS-Alumni!"
-		redirect_to @user
-	else
-		@title="Registrar-se"
-		render 'new'
-	end
+    @user = User.new(params[ :user])
+    if @user.save
+      #sign_in @user
+      flash[:success] = "Usuari creat!"
+      #redirect_to @user
+    else
+      @title = "Afegir un nou usuari"
+      render 'new'
+    end
   end
 
   def index
-    @title="Tots els alumni"
-	@users=User.paginate(:page=>params[ :page])
+    @title = "Tots els alumni"
+    @users = User.paginate(:page=>params[ :page])
   end
   
   def show
@@ -25,12 +26,12 @@ class UsersController < ApplicationController
   end
 
   def new
-	@user = User.new
-    @title="Sign up"
+    @user = User.new
+    @title = "Registre"
   end
 
   def edit
-	@title="Edit user"
+    @title = "Editar usuari"
   end
 
   def update
@@ -44,6 +45,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Usuari eliminat."
+    redirect_to users_path
+  end
+
   private
 
 	def authenticate
@@ -52,6 +59,10 @@ class UsersController < ApplicationController
 
 	def correct_user
 		@user=User.find(params[ :id])
-		redirect_to(root_path) unless current_user?(@user)
+		redirect_to(root_path) unless (current_user?(@user) or current_user.admin?)
 	end
+
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
+  end
 end
