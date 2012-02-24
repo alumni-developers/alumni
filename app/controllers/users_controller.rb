@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       #sign_in @user
       flash[:success] = "Usuari creat!"
-      #redirect_to @user
+      redirect_to users_path
     else
       @title = "Afegir un nou usuari"
       render 'new'
@@ -17,16 +17,6 @@ class UsersController < ApplicationController
 
   def index
     @title = "Tots els alumni"
-#    @users = User.order('name DESC')
-#    if params[:search]
-#      @users = @users.where('name LIKE ?', "%#{params[:search]}")
-#      if @users.size.zero?
-#        flash[:notice] = "No s'ha trobat cap resultat, es mostra el directori
-#                          complet."
-#      flash[:notice] = @users.size
-#        @users = User.order('name DESC')
-#      end
-#    end
     @users = User.search(params[:search])
     if @users.size.zero?
       flash[:notice] = "No s'ha trobat cap resultat, es mostra el directori
