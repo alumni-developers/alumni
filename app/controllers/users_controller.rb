@@ -17,7 +17,23 @@ class UsersController < ApplicationController
 
   def index
     @title = "Tots els alumni"
-    @users = User.paginate(:page=>params[ :page])
+#    @users = User.order('name DESC')
+#    if params[:search]
+#      @users = @users.where('name LIKE ?', "%#{params[:search]}")
+#      if @users.size.zero?
+#        flash[:notice] = "No s'ha trobat cap resultat, es mostra el directori
+#                          complet."
+#      flash[:notice] = @users.size
+#        @users = User.order('name DESC')
+#      end
+#    end
+    @users = User.search(params[:search])
+    if @users.size.zero?
+      flash[:notice] = "No s'ha trobat cap resultat, es mostra el directori
+                        complet."
+      @users = User.all
+    end
+    @users = @users.paginate(:page => params[:page])
   end
   
   def show

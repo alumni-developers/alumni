@@ -15,6 +15,7 @@
 #  linkedin           :string(255)
 #  abroad             :text
 #  work               :text
+#  admin              :boolean
 #
 
 require 'digest'
@@ -53,6 +54,14 @@ class User < ActiveRecord::Base
 
   def signed_in?
     !current_user.nil?
+  end
+
+  def self.search(search)
+    if search
+      where('LOWER(name) LIKE ?', "%#{search.downcase}%")
+    else
+      scoped
+    end
   end
 
   private
