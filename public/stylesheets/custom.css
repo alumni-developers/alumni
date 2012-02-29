@@ -115,9 +115,6 @@ footer nav {
   float: none;
 }
 
-.
-.
-.
 /* User show page */
 
 table.profile {
@@ -140,6 +137,37 @@ td.sidebar {
 .profile img.gravatar {
   border: 1px solid #999;
   margin-bottom: -15px;
+}
+
+/* Posts */
+table.posts {
+  margin-top: 1em;
+}
+
+table.posts td.post {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.posts td.post h1 {
+  margin-bottom: 0.3em;
+  font-size: 180%;
+}
+
+table.posts td.post span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+form.new_post {
+  margin-bottom: 2em;
+}
+
+form.new_post textarea {
+  height: 4em;
+  margin-bottom: 0;
 }
 
 /* Sign up Form */

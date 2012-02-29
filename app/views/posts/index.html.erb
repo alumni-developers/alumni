@@ -1,0 +1,17 @@
+<h1>Notícies</h1>
+
+<% if current_user.admin? %>
+  <hr style="margin-bottom: 0" />
+    <%= link_to "Afegir nova notícia", new_post_path %>
+  <hr />
+<% end %>
+
+
+<%= will_paginate %>
+
+<table class="posts" summary="Notícies">
+  <%= render @posts %>
+</table>
+
+<%= will_paginate %>
+

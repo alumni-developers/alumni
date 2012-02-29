@@ -5,6 +5,7 @@
     <% if not signed_in? %>
       <li><%= link_to "Casa", root_path %></li>
     <% else %>
+      <li><%= link_to "Notícies", posts_path %></li>
       <li><%= link_to "Directori", users_path %></li>
       <li><%= link_to "Perfil", current_user %></li>
       <li><%= link_to "Editar",edit_user_path(current_user) %></li>

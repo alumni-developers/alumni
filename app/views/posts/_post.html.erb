@@ -1,0 +1,16 @@
+<tr>
+  <td class="post">
+    <h1><%= post.title %></h1>
+    <span class="content"><%= post.content %></span>
+    <span class="timestamp">
+      Publicat fa <%= time_ago_in_words(post.created_at) %>
+    </span>
+  </td>
+  <% if current_user.admin? %>
+    <td>
+      <%= link_to "eliminar", post, :method => :delete,
+                                    :confirm => "Segur?",
+                                    :title => post.title %>
+    </td>
+  <% end %>
+</tr>
