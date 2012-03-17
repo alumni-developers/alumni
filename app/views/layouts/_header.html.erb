@@ -17,19 +17,19 @@
 		<li class=""><%= link_to "Ajuda", help_path %></li>
 		<li><%= link_to "Contacte",contact_path %></li>
 		<li class="divider-vertical"></li>
-		<ul class="nav secondary-nav pull-right">
+		<ul class="nav secondary-nav">
             <li class="menu">
             	<% if signed_in? %>
                 <li><%= link_to "Perfil", current_user %></li>
                 <li><%= link_to "Editar",edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li><%= link_to "Sortir", signout_path, :method => :delete %></li>
-                </ul>
+                
                 <% else %>
                 <%= link_to "Entrar", signin_path %>
 		        <% end %>
             </li>
-		</ul>
+        </ul>   
 	</ul>
 	</div>
 </div>
