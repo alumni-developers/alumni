@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <%= csrf_meta_tag %>
-    <%= render 'layouts/stylesheets' %>
-    <%= javascript_include_tag :defaults %>
-  </head>
-  <body>
-    <div class="container">
-      <%= render 'layouts/header' %>
-      <section class="round">
-        <% flash.each do |key, value| %>
-          <div class="flash <%= key %>"><%= value %></div>
-        <% end %>
-		<%= yield %>
-      </section>
-      <%= render 'layouts/footer' %>
-	  <%= debug(params)if Rails.env.development? %>
-    </div>
-  </body>
+	<head>
+    	<title><%= title %></title>
+    	<%= csrf_meta_tag %>
+    	<%= render 'layouts/stylesheets' %>
+    	<%= javascript_include_tag :defaults %>
+    	<style>
+      	body {
+        	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      	}
+    	</style>
+  	</head>
+  	<body data-spy="scroll" data-target=".subnav" data-offset="50">
+    	
+      	<%= render 'layouts/header' %>
+      	<div class="container">
+	        <% flash.each do |key, value| %>
+	          <div class="flash <%= key %>"><%= value %></div>
+	        <% end %>
+			<%= yield %>
+      	
+      	<%= render 'layouts/footer' %>
+	  	<%= debug(params)if Rails.env.development? %>
+    	</div>
+  	</body>
 </html>
 
