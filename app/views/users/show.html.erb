@@ -1,41 +1,37 @@
-<table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3">
+			<div class="well sidebar-nav">
+			<%= gravatar_for @user %>
+			<ul class="nav nav-list">
+				<li class="nav-header">Titulació</li>
+				<!--TODO link to filter search -->
+				<li><a href="#"><%= @user.degree %></a></li>
+				<li class="nav-header">Promoció</li>
+				<li><a href="#"><%= @user.year %></a></li>
+				<li class="nav-header">email</li>
+				<li><a href="#"><%= @user.email %></li>
+			</ul>
+			</div><!--/.well -->
+		</div><!--/span-->
+		<div class="span9">
+			<div class="hero-unit">
+			<h2>
+				<%= gravatar_for @user %>
+				<%= @user.name %>
+			</h2>
+			<p></p>
+			<p><a class="btn btn-primary btn-large">Contacta &raquo;</a></p>
+			</div>
+			<h3>Estades extranger</h3>
+			<p><%= @user.abroad %></p>
+			<h3>Experiència Laboral</h3>
+			<p><%= @user.work %></p>
+			<h3>Interesos</h3>
+			<p><%= @user.likes %></p>
+		</div>
+	</div>
+</div>
 
-    </td>
-    <td class="sidebar round">
-      <strong>Titulació</strong> <br /> <%= @user.degree %><br />
-      <strong>Any Graduació</strong> <br /> <%= @user.year %><br />
-      <strong>email</strong> <br /> <%= @user.email %><br />
-    </td>
-  </tr>
-  <tr>
-    <td class="sidebar round">
-    <strong>Estades a l'extranger'</strong><br />
-    <%= @user.abroad %>
-    </td>
-  </tr>
-  <tr>
-    <td class="sidebar round">
-    <strong>Experiència Laboral</strong><br />
-    <%= @user.work %>
-    </td>
-  </tr>
-  <tr>
-    <td class="sidebar round">
-    <strong>Interessos</strong><br />
-    <%= @user.likes %>
-    </td>
-  </tr>
-  <tr>
-    <td class="sidebar round">
-    <strong>Perfil Linkedin</strong><br />
-    <%= link_to "Veure perfil", @user.linkedin, :target => '_blank'%>
-    </td>
-  </tr>
-</table>
+
 

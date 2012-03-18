@@ -23,7 +23,7 @@
 	<ul class="nav pull-right">
     	<li id="fat-menu" class="dropdown">
 	        <% if signed_in? %>
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">cc <b class="caret"></b></a>
+	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= @user.name %> <b class="caret"></b></a>
 	        <ul class="dropdown-menu">
 	        	<li><%= link_to "Perfil", current_user %></li>
 	          	<li><%= link_to "Editar",edit_user_path(current_user) %></li>
