@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229031317) do
+ActiveRecord::Schema.define(:version => 20120319001713) do
 
   create_table "posts", :force => true do |t|
     t.string   "content"
@@ -29,13 +29,14 @@ ActiveRecord::Schema.define(:version => 20120229031317) do
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.string   "degree"
+    t.string   "degree1"
     t.integer  "year"
     t.text     "likes"
     t.string   "linkedin"
     t.text     "abroad"
     t.text     "work"
     t.boolean  "admin",              :default => false
+    t.string   "degree2"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

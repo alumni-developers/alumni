@@ -1,3 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  email: MyString
+
+two:
+  name: MyString
+  email: MyString
+
 # == Schema Information
 #
 # Table name: users
@@ -9,20 +19,13 @@
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
-#  degree             :string(255)
+#  degree1            :string(255)
 #  year               :integer
 #  likes              :text
 #  linkedin           :string(255)
 #  abroad             :text
 #  work               :text
+#  admin              :boolean         default(FALSE)
+#  degree2            :string(255)
 #
 
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-  email: MyString
-
-two:
-  name: MyString
-  email: MyString

@@ -9,19 +9,20 @@
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
-#  degree             :string(255)
+#  degree1            :string(255)
 #  year               :integer
 #  likes              :text
 #  linkedin           :string(255)
 #  abroad             :text
 #  work               :text
-#  admin              :boolean
+#  admin              :boolean         default(FALSE)
+#  degree2            :string(255)
 #
 
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :degree, :year, :likes, :linkedin, :abroad, :work
+  attr_accessible :name, :email, :password, :password_confirmation, :degree1, :degree2, :year, :likes, :linkedin, :abroad, :work
   attr_accessor :password
 
   has_many :posts
@@ -84,4 +85,3 @@ class User < ActiveRecord::Base
       Digest::SHA2.hexdigest(string)
     end
 end
-

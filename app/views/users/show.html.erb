@@ -3,32 +3,35 @@
 		<div class="span3">
 			<div class="well sidebar-nav">
 			<%= gravatar_for @user %>
+			<p></p>
 			<ul class="nav nav-list">
 				<li class="nav-header">Titulació</li>
 				<!--TODO link to filter search -->
-				<li><a href="#"><%= @user.degree %></a></li>
+				<li><a href="#"><%= @user.degree1 %></a></li>
+				<li><a href="#"><%= @user.degree2 %></a></li>
 				<li class="nav-header">Promoció</li>
 				<li><a href="#"><%= @user.year %></a></li>
 				<li class="nav-header">email</li>
-				<li><a href="#"><%= @user.email %></li>
+				<li><a href="#"><%= @user.email %></a></li>
 			</ul>
 			</div><!--/.well -->
 		</div><!--/span-->
 		<div class="span9">
-			<div class="hero-unit">
-			<h2>
-				<%= gravatar_for @user %>
-				<%= @user.name %>
-			</h2>
-			<p></p>
-			<p><a class="btn btn-primary btn-large">Contacta &raquo;</a></p>
+			<div class="well">
+				<h2>
+					<%= gravatar_for @user, :size=>70 %>
+					<%= @user.name %>
+				</h2>
+				
 			</div>
-			<h3>Estades extranger</h3>
-			<p><%= @user.abroad %></p>
-			<h3>Experiència Laboral</h3>
-			<p><%= @user.work %></p>
-			<h3>Interesos</h3>
-			<p><%= @user.likes %></p>
+			<div class="span8">
+				<h3>Estades extranger</h3>
+				<p><%= @user.abroad %></p>
+				<h3>Experiència Laboral</h3>
+				<p><%= @user.work %></p>
+				<h3>Interesos</h3>
+				<p><%= @user.likes %></p>
+			</div>
 		</div>
 	</div>
 </div>
