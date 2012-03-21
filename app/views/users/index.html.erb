@@ -13,11 +13,28 @@
   </p>
 <% end %>
 
-<%= will_paginate %>
+<!-- http://guides.rubyonrails.org/layouts_and_rendering.html-->
 
-<ul class="users">
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
-
+<div class="span8">
+<table class="table table-striped">
+	<thead>
+		<tr>
+		<th>#fotu#</th>
+		<th>Nom i cognoms</th>
+		<th>Titulacions</th>
+		<th>Promoció</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+			<td></td>	
+			<td><%= user.name %></td>
+			<td><%= user.degree1 %> + <%= user.degree2 %></td>
+			<td><%= user.year %></td>
+			<td>@mdo</td>
+			</tr>
+		<%end%>	
+	</tbody>
+</table>
+</div>
