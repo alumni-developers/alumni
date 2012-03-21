@@ -14,27 +14,29 @@
 <% end %>
 
 <!-- http://guides.rubyonrails.org/layouts_and_rendering.html-->
-
-<div class="span8">
-<table class="table table-striped">
-	<thead>
-		<tr>
-		<th>#fotu#</th>
-		<th>Nom i cognoms</th>
-		<th>Titulacions</th>
-		<th>Promoció</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @users.each do |user| %>
+<div class="container">
+	<div class="span7 offset2">
+	<table class="table table-striped">
+		<thead>
 			<tr>
-			<td></td>	
-			<td><%= user.name %></td>
-			<td><%= user.degree1 %> + <%= user.degree2 %></td>
-			<td><%= user.year %></td>
-			<td>@mdo</td>
+			<th></th>
+			<th>Nom i cognoms</th>
+			<th>Titulacions</th>
+			<th>Promoció</th>
 			</tr>
-		<%end%>	
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+				<td><%= gravatar_for user, :size=>50 %></td>	
+				<td><%= link_to user.name,user %></td>
+				<td><%= user.degree1 %> + <%= user.degree2 %></td>
+				<td><%= user.year %></td>
+				</tr>
+			<%end%>	
+		</tbody>
+		
+	</table>
+	</div>
 </div>
+<%= will_paginate :prev_label=>"Anterior",:next_label=>"Seguent"%>

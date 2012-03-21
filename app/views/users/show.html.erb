@@ -16,7 +16,7 @@
 			</ul>
 			</div><!--/.well -->
 		</div><!--/span-->
-		<div class="span9">
+		<div class="span7">
 			<div class="well">
 				<h2>
 					<%= gravatar_for @user, :size=>70 %>
@@ -25,12 +25,24 @@
 				
 			</div>
 			<div class="span8">
-				<h3>Estades extranger</h3>
-				<p><%= @user.abroad %></p>
-				<h3>Experiència Laboral</h3>
-				<p><%= @user.work %></p>
-				<h3>Interesos</h3>
-				<p><%= @user.likes %></p>
+				<section id="abroad">
+					<div class="page-header">
+						<h2>Estades extranger</h2>
+					</div>
+					<p><%= @user.abroad %></p>
+				</section>
+				<section id="work">
+					<div class="page-header">
+						<h3>Experiència Laboral</h3>
+					</div>
+					<p><%= @user.work %></p>
+				</section>
+				<section id="likes">
+					<div class="page-header">
+						<h3>Interesos</h3>
+					</div>
+					<p><%= @user.likes %></p>
+				</section>
 			</div>
 		</div>
 	</div>
