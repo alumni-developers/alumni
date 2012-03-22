@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @title = "Tots els alumni"
     @users = User.search(params[:search])
     if @users.empty?
-      flash[:notice] = "No s'ha trobat cap resultat, es mostra el directori
+      flash.now[:notice] = "No s'ha trobat cap resultat, es mostra el directori
                         complet."
       @users = User.all
     end

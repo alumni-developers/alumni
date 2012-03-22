@@ -61,6 +61,8 @@ class User < ActiveRecord::Base
     !current_user.nil?
   end
 
+
+
   def self.classifica_degree(degree)
 
     titulacions_possibles=%w[telecos telecomunicacions telecomunicaciones 
@@ -87,27 +89,36 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
-    if search
 
-      years=search.split('-') #it might be a search by graduation years
-      if years.length==1 && years.first.to_i.between?(2003,2010) # only one year specified
+  def self.search_year(search)
+    years=search.split('-') 
+
+    if years.length==1 && years.first.to_i.between?(2003,2010) # only one year specified
          where(:year=>years.first.to_i)
       elsif years.length==2 && years.first.to_i.between?(2003,2010) && years.second.to_i.between?(2003,2010) && years.second.to_i>years.first.to_i
          where(:year => years.first.to_i..years.second.to_i)
 
-      else  #not a year!
 
 
-        titulacions=search.split('+') #might search by degree
-        if titulacions.length==1 #only one degree specified
-           titulacio2=titulacio1=classifica_degree(titulacions.first)        
-	   where("degree1 = :degree1 OR degree2 = :degree2",{:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
-        elsif titulacions.length==2
-           titulacio1=classifica_degree(titulacions.first)
-           titulacio2=classifica_degree(titulacions.second)
-           where("(degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1)",
-                {:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
+  end
+
+
+  def self.search(search)
+    if search
+
+#it might be a search by graduation years
+      titulacions=search.split('+') #might search by degree
+
+      
+      elsif  #not a year!
+         itulacions.length==1 #only one degree specified
+         titulacio2=titulacio1=classifica_degree(titulacions.first)        
+	 where("degree1 = :degree1 OR degree2 = :degree2",{:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
+      elsif titulacions.length==2
+         titulacio1=classifica_degree(titulacions.first)
+         titulacio2=classifica_degree(titulacions.second)
+         where("(degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1)",
+              {:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
 
 #          where('LOWER(degree1) LIKE ?', "%#{titulacio1}%")     
 # 	   where('LOWER(degree1) LIKE ?', "%#{titulacions.first.downcase}%")       
