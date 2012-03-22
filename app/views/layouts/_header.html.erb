@@ -23,8 +23,9 @@
 	<ul class="nav pull-right">
     	<li id="fat-menu" class="dropdown">
 	        <% if signed_in? %>
-	        <!--FIXME name nil if "username" subsituted for @user.name-->
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> username <b class="caret"></b></a> <!--  @user.name  -->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= current_user.name %> <b class="caret"></b>
+          </a>
 	        <ul class="dropdown-menu">
 	        	<li><%= link_to "Perfil", current_user %></li>
 	          	<li><%= link_to "Editar",edit_user_path(current_user) %></li>
