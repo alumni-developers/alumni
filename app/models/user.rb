@@ -61,61 +61,94 @@ class User < ActiveRecord::Base
     !current_user.nil?
   end
 
-  def self.classifica_degree(degree)
-
-    titulacions_possibles=%w[telecos telecomunicacions telecomunicaciones 
-			     mates matematiques matemàtiques matematicas matemáticas 
-                             informatica informàtica informática 
-                             camins caminos industrials industriales]
-    if !titulacions_possibles.include?(degree.downcase) 
-      return "error"
+  
+  def self.search_year(search)
+    years=search.split('-') 
+    if years.length==1 && years.first.to_i.between?(2003,Time.now.year) # only one year specified ALSO, SHOULD IT BE CURRENT YEAR?
+       [years.first.to_i,years.first.to_i]
+    elsif years.length==2 && years.first.to_i.between?(2003,Time.now.year) && years.second.to_i.between?(2003,Time.now.year) && years.second.to_i>years.first.to_i
+       [years.first.to_i,years.second.to_i]
     else
-      case titulacions_possibles.index(degree.downcase) #understand the name of the degree
-        when 0..2
-          "Telecomunicacions"
-        when 3..7
-          "Matemàtiques"
-        when 8..10
-          "Informàtica"
-        when 11..12
-          "Camins"
-        when 13..14
-          "Industrials"
-        else
-          return "error"
-      end
+       nil
     end
+  end
+
+  def self.classifica_degree(degree)
+    case degree.downcase
+      when "telecos","telecomunicacions","telecomunicaciones"
+         "Telecomunicacions"
+      when "mates","matematiques","matemàtiques","matematicas","matemáticas"
+         "Matemàtiques"
+      when "informatica","informàtica","informática"
+         "Informàtica"
+      when "camins","caminos"
+         "Camins"
+      when "industrials","indus","industriales"
+         "Industrials"
+      else
+         nil   
+    end
+  end
+  
+  def self.search_degree(search)
+    titulacions=search.split('+') 
+
+    case titulacions.first #busca per 'motes'
+      when "telecomat","telecomates"
+        return ["Telecomunicacions","Matemàtiques"]
+      when "infomates","infomat"
+        return ["Informàtica","Matemàtiques"]
+    end #no se m'acudeixen més!
+    
+    if titulacions.length==1 
+        return [check=classifica_degree(titulacions.first)] unless check.nil?
+    else
+        return !(check=[classifica_degree(titulacions.first),classifica_degree(titulacions.second)]).include?(nil) ? check : nil    
+    end
+    
+    return nil
   end
 
   def self.search(search)
     if search
 
-      years=search.split('-') #it might be a search by graduation years
-      if years.length==1 && years.first.to_i.between?(2003,2010) # only one year specified
-         where(:year=>years.first.to_i)
-      elsif years.length==2 && years.first.to_i.between?(2003,2010) && years.second.to_i.between?(2003,2010) && years.second.to_i>years.first.to_i
-         where(:year => years.first.to_i..years.second.to_i)
+       search.sub(/ i /,'+') #Per poder admetre telecos i mates ==> telecos+mates
+       search_cond=''
+       search_param={}
+       parts=search.split(' ')
+       parts.each do |search_component|
+         if !(years=search_year(search_component)).nil?
+           search_cond+='(year BETWEEN :year_first AND :year_last)'
+           search_param[:year_first]=years.first
+           search_param[:year_last]=years.second
+         elsif !(degrees=search_degree(search_component)).nil?
+           search_cond+='AND((degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1))'
+           search_param[:degree1]=degrees.first
+           search_param[:degree2]=degrees.second
+         end
+       end
+       
+       where(search_cond,search_param)
 
-      else  #not a year!
-
-
-        titulacions=search.split('+') #might search by degree
-        if titulacions.length==1 #only one degree specified
-           titulacio2=titulacio1=classifica_degree(titulacions.first)        
-	   where("degree1 = :degree1 OR degree2 = :degree2",{:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
-        elsif titulacions.length==2
-           titulacio1=classifica_degree(titulacions.first)
-           titulacio2=classifica_degree(titulacions.second)
-           where("(degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1)",
-                {:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
-
-#          where('LOWER(degree1) LIKE ?', "%#{titulacio1}%")     
-# 	   where('LOWER(degree1) LIKE ?', "%#{titulacions.first.downcase}%")       
-#          where('LOWER(name) LIKE ?', "%#{search.downcase}%")
-        end
-      end
+#       where('year BETWEEN ? AND ?',*search_year(search))
+#
+#
+        #might search by degree
+       #only one degree specified
+ #          titulacio2=titulacio1=classifica_degree(titulacions.first)        
+#	   where("degree1 = :degree1 OR degree2 = :degree2",{:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
+ #       elsif titulacions.length==2
+  #         titulacio1=classifica_degree(titulacions.first)
+   #        titulacio2=classifica_degree(titulacions.second)
+    #       where("(degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1)",
+     #           {:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
+     #      where('LOWER(degree1) LIKE ?', "%{titulacio1}%")     
+# 	   where('LOWER(degree1) LIKE ?', "%{titulacions.first.downcase}%")       
+#          where('LOWER(name) LIKE ?', "%{search.downcase}%") falta coixinet!
+#        end
+#      end
     else
-      scoped
+      find(:all)
     end
   end
 
