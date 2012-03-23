@@ -73,8 +73,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.classifica_degree(degree)
-    case degree.downcase
+  def self.search_degree(search)
+    case search.downcase
       when "telecos","telecomunicacions","telecomunicaciones"
          "Telecomunicacions"
       when "mates","matematiques","matemàtiques","matematicas","matemáticas"
@@ -90,63 +90,49 @@ class User < ActiveRecord::Base
     end
   end
   
-  def self.search_degree(search)
-    titulacions=search.split('+') 
-
-    case titulacions.first #busca per 'motes'
+  def self.search_degree_mote(search)
+    case search #busca per 'motes'
       when "telecomat","telecomates"
-        return ["Telecomunicacions","Matemàtiques"]
+        ["Telecomunicacions","Matemàtiques"]
       when "infomates","infomat"
-        return ["Informàtica","Matemàtiques"]
-    end #no se m'acudeixen més!
-    
-    if titulacions.length==1 
-        return [check=classifica_degree(titulacions.first)] unless check.nil?
-    else
-        return !(check=[classifica_degree(titulacions.first),classifica_degree(titulacions.second)]).include?(nil) ? check : nil    
-    end
-    
-    return nil
+        ["Informàtica","Matemàtiques"]
+    end #no se m'acudeixen més!    
   end
 
   def self.search(search)
     if search
 
-       search.sub(/ i /,'+') #Per poder admetre telecos i mates ==> telecos+mates
        search_cond=''
        search_param={}
-       parts=search.split(' ')
+
+       parts=search.split(/[ +]/).compact #without compact it doesn't work, has some nil elements... why??
+
        parts.each do |search_component|
+         search_cond+="AND" unless search_cond.empty?
          if !(years=search_year(search_component)).nil?
            search_cond+='(year BETWEEN :year_first AND :year_last)'
            search_param[:year_first]=years.first
            search_param[:year_last]=years.second
-         elsif !(degrees=search_degree(search_component)).nil?
-           search_cond+='AND((degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1))'
+         elsif !(degrees=search_degree_mote(search_component)).nil?
+           search_cond+='((degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1))'
            search_param[:degree1]=degrees.first
            search_param[:degree2]=degrees.second
+         elsif !(degree=search_degree(search_component)).nil?
+           if search_param[:degree1].nil?
+              search_cond+='(degree1 =:degree1 OR degree2=:degree1)'
+              search_param[:degree1]=degree
+           elsif search_param[:degree2].nil?
+              search_cond+='(degree1 =:degree2 OR degree2=:degree2)'
+              search_param[:degree2]=degree
+           end
+         else #interpreto que és el nom d'una persona (o, més endavant, d'una empresa)
+           search_cond+='(LOWER(name) LIKE :name)'
+           search_param[:name]="%#{search_component.downcase}%"
          end
        end
        
        where(search_cond,search_param)
 
-#       where('year BETWEEN ? AND ?',*search_year(search))
-#
-#
-        #might search by degree
-       #only one degree specified
- #          titulacio2=titulacio1=classifica_degree(titulacions.first)        
-#	   where("degree1 = :degree1 OR degree2 = :degree2",{:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
- #       elsif titulacions.length==2
-  #         titulacio1=classifica_degree(titulacions.first)
-   #        titulacio2=classifica_degree(titulacions.second)
-    #       where("(degree1 = :degree1 AND degree2 = :degree2) OR (degree1 = :degree2 AND degree2 = :degree1)",
-     #           {:degree1=>titulacio1,:degree2=>titulacio2}) #search by degree
-     #      where('LOWER(degree1) LIKE ?', "%{titulacio1}%")     
-# 	   where('LOWER(degree1) LIKE ?', "%{titulacions.first.downcase}%")       
-#          where('LOWER(name) LIKE ?', "%{search.downcase}%") falta coixinet!
-#        end
-#      end
     else
       find(:all)
     end
