@@ -1,23 +1,57 @@
-<h1>Directori</h1>
 
+
+<!-- http://guides.rubyonrails.org/layouts_and_rendering.html-->
+<div class="span8 offset2">
+<div class="page-header">
+	<h1>Directori</h1>
+</div>
+
+
+<%= form_tag users_path,:class=>"well form-search" ,:method => 'get' do %>
+<p>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Buscar", :name => nil %>
+</p>
 <% if current_user.admin? %>
-  <hr style="margin-bottom: 0" />
-  <%= link_to "Afegir nou usuari", new_user_path %>
-  <hr />
+  	<div class="pull-right">
+  	<i class="icon-user"></i>
+  	<%= link_to "Afegir nou usuari", new_user_path %>
+	</div>
 <% end %>
-
-<%= form_tag users_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Buscar", :name => nil %>
-  </p>
 <% end %>
+<table class="table table-striped">
+	<thead>
+		<tr>
+		<th></th>
+		<th>Nom i cognoms</th>
+		<th>Titulacions</th>
+		<th>Promoció</th>
+		<% if current_user.admin? %>
+		<th>Admin</th>
+		<% end%>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+			<td><%= gravatar_for user, :size=>50 %></td>	
+			<td><%= link_to user.name,user %></td>
+			<td><%= user.degree1 %>  <br/> <%= user.degree2 %></td>
+			<td><%= user.year %></td>
+			<% if current_user.admin? %>
+			<td>
+				<i class="icon-pencil"></i>
+				<i class="icon-remove"></i>
+			</td>
+			<% end%>
+			</tr>
+		<%end%>	
+	</tbody>
+	
+</table>
+<!--TODO Bootsrap pagination-->
+<!--Take a look at https://github.com/mislav/will_paginate/issues/158-->
+<%= will_paginate :prev_label=>"Anterior", :next_label=>"seguent"%>
+</div>
 
-<%= will_paginate %>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
 

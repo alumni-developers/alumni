@@ -23,7 +23,7 @@ class UsersController < ApplicationController
                         complet."
       @users = User.all
     end
-    @users = @users.paginate(:page => params[:page])
+    @users = @users.paginate(:page=>params[:page],:per_page=>10)
   end
   
   def show

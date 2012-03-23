@@ -1,18 +1,21 @@
-<h1>Entrar</h1>
-
-<%= form_for(:session, :url => sessions_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Entrar" %>
-  </div>
-<% end %>
-
-<p>Usuari nou? <%= link_to "Registra't ja!", about_path %></p>
-
+<div class="span8 offset2">
+	<div class="page-header">
+		<h1>Entrar</h1>
+	</div>
+	
+	<%= form_for(:session, :url => sessions_path, :class=>"well") do |f| %>
+	  <div class="field">
+	    <%= f.label :email %><br />
+	    <%= f.text_field :email %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :password %><br />
+	    <%= f.password_field :password %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit "Entrar" %>
+	  </div>
+	<% end %>
+	
+	<p>Usuari nou? <%= link_to "Registra't ja!", about_path %></p>
+</div>
