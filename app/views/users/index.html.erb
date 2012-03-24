@@ -1,12 +1,12 @@
 
 
 <!-- http://guides.rubyonrails.org/layouts_and_rendering.html-->
-<div class="span8 offset2">
+<div class="span9 offset1">
 <div class="page-header">
 	<h1>Directori</h1>
 </div>
 
-
+<div class="span8">
 <%= form_tag users_path,:class=>"well form-search" ,:method => 'get' do %>
 <p>
 <%= text_field_tag :search, params[:search] %>
@@ -52,6 +52,7 @@
 <!--TODO Bootsrap pagination-->
 <!--Take a look at https://github.com/mislav/will_paginate/issues/158-->
 <%= will_paginate :prev_label=>"Anterior", :next_label=>"seguent"%>
+</div> <!--./span8 -->
 </div>
 
 
