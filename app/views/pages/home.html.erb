@@ -9,14 +9,16 @@
 	<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 	<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 	</div>
-
-	<div class="offset2 span5 top-sep2">
-	<%= form_for(:session, :url => sessions_path, :class=>"well form-inline") do |f| %>
-		<%= f.text_field :email, :class=> "input-clarge", :placeholder => 'e-mail' %>            
-		<%= f.password_field :password, :class=>"input-medium",  :placeholder => 'contrasenya' %>
-		<%= f.submit "Entrar", :class=>"" %>
+	
+	<% if ! signed_in? %>
+		<div class="offset2 span5 top-sep2">
+		<%= form_for(:session, :url => sessions_path, :class=>"well form-inline") do |f| %>
+			<%= f.text_field :email, :class=> "input-clarge", :placeholder => 'e-mail' %>            
+			<%= f.password_field :password, :class=>"input-medium",  :placeholder => 'contrasenya' %>
+			<%= f.submit "Entrar", :class=>"" %>
+		<% end %>
+		</div>
 	<% end %>
-	</div>
 </div>
 
 
