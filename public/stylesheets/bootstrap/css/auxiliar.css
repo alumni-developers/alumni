@@ -8,3 +8,19 @@
 .top-sep2{
 	padding-top: 60px;
 }
+
+.top-sep3{
+	padding-top: 40px;
+}
+
+/*Entries in show profile*/
+.entry{
+	padding-top: 30px
+}
+
+.title_show{
+	text-align: right;
+	padding-right: 10px
+}
+
+

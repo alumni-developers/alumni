@@ -1,52 +1,92 @@
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span3">
-			<div class="well sidebar-nav">
-			<%= gravatar_for @user %>
-			<p></p>
-			<ul class="nav nav-list">
-				<li class="nav-header">Titulació</li>
-				<!--TODO link to filter search -->
-				<li><a href="#"><%= @user.degree1 %></a></li>
-				<li><a href="#"><%= @user.degree2 %></a></li>
-				<li class="nav-header">Promoció</li>
-				<li><a href="#"><%= @user.year %></a></li>
-				<li class="nav-header">email</li>
-				<li><a href="#"><%= @user.email %></a></li>
+<div class="span9 offset1 top-sep3">
+	<div class="span2">
+		<div class="sidebar-nav">
+		<%= gravatar_for @user,:size=>110 %>
+		<p></p>
+		<ul class="nav nav-list well">
+			<li class="nav-header">Titulació</li>
+			<!--TODO link to filter search -->
+			<li><a href="#"><%= @user.degree1 %></a></li>
+			<li><a href="#"><%= @user.degree2 %></a></li>
+			<li class="nav-header">Promoció</li>
+			<li><a href="#"><%= @user.year %></a></li>
+		</ul>
+		</div>
+	</div>
+	<div class="span6">
+		<div class="span6">
+		<h1><%= @user.name %></h1>
+		</div>
+		<div class="span6 top-sep3">
+			<ul class="nav nav-tabs">
+		  		<li class="active"><a href="#personal">Personal</a></li>
+		  		<li><a href="#work">Experiència Laboral</a></li>
+		 		<li><a href="#abroad">Estades Extranger</a></li>
+		 		<li><a href="#interests">Aficions</a></li>
 			</ul>
-			</div><!--/.well -->
-		</div><!--/span-->
-		<div class="span7">
-			<div class="well">
-				<h2>
-					<%= gravatar_for @user, :size=>70 %>
-					<%= @user.name %>
-				</h2>
+			<div class="tab-content">
+				<div class="tab-pane active" id="personal">
+					<div class="entry">
+						<div class="span1 title_show"><h6>Edat</h6></div>
+						<div>23</div>
+					</div>
+					<div class="entry">
+						<div class="span1 title_show"><h6>e-mail</h6></div>
+						<div><%= @user.email %></div>
+					</div>
+					<div class="entry">
+						<div class="span1 title_show"><h6>Telèfon contacte</h6></div>
+						<div>655677687</div>
+					</div>
+					<div class="entry">
+						<div class="span1 title_show"><h6>Procedència</h6></div>
+						<div>Lleida</div>
+					</div>
+					<div class="entry">
+						<div class="span1 title_show"><h6>Actual residència</h6></div>
+						<div>Barcelona</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="work">
 				
+				</div>
+				<div class="tab-pane" id="abroad">
+				
+				</div>
+				<div class="tab-pane" id="interests">
+					
+				</div>
 			</div>
-			<div class="span8">
-				<section id="abroad">
-					<div class="page-header">
-						<h2>Estades extranger</h2>
-					</div>
-					<p><%= @user.abroad %></p>
-				</section>
-				<section id="work">
-					<div class="page-header">
-						<h3>Experiència Laboral</h3>
-					</div>
-					<p><%= @user.work %></p>
-				</section>
-				<section id="likes">
-					<div class="page-header">
-						<h3>Interesos</h3>
-					</div>
-					<p><%= @user.likes %></p>
-				</section>
-			</div>
+	 
+			<script>
+			  $(function () {
+			    $('.tabs a:last').tab('show')
+			  })
+			</script>
+			<!--
+			<section id="abroad">
+				<div class="page-header">
+					<h2>Estades extranger</h2>
+				</div>
+				<p><%= @user.abroad %></p>
+			</section>
+			<section id="work">
+				<div class="page-header">
+					<h3>Experiència Laboral</h3>
+				</div>
+				<p><%= @user.work %></p>
+			</section>
+			<section id="likes">
+				<div class="page-header">
+					<h3>Interesos</h3>
+				</div>
+				<p><%= @user.likes %></p>
+			</section>
+			-->
 		</div>
 	</div>
 </div>
+
 
 <!-- 
 <%= link_to "Veure perfil", @user.linkedin, :target => '_blank'%>
