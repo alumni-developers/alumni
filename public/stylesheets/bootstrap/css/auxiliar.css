@@ -23,4 +23,14 @@
 	padding-right: 10px
 }
 
+/*News entry*/
+.news{
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+
+.events{
+	float: right;
+	margin-top: 20px;
+}
 

@@ -4,17 +4,38 @@
 	</div>
 	
 	<% if current_user.admin? %>
-	  <hr style="margin-bottom: 0" />
-	    <%= link_to "Afegir nova notícia", new_post_path %>
-	  <hr />
+	  	<hr/>
+	    <%= link_to "Afegir nova notícia", new_post_path, :class=>"btn btn-small btn-success" %>
+	 	<hr/>
 	<% end %>
 	
 	
 	<%= will_paginate %>
-	
-	<table class="posts" summary="Notícies">
-	  <%= render @posts %>
-	</table>
+	<div class="row">
+		<div class="span2 well events">
+			<h3>Events</h3>
+			<div class="news">
+				<strong>Sopar exalumnes</strong>
+				<p><em>28 d'Abril de 2012</em></p>
+			</div>
+			<div class="news">
+				<strong>Primera trobada</strong>
+				<p><em>15 de Març de 2013</em></p>
+			</div>
+		</div>
+		<% @posts.each do |post| %>
+			<div class="span6 news">
+				<h2><%= post.title %></h2>
+				<% if current_user.admin? %>
+					<a href="#" class="btn btn-primary btn-small">Editar</a>
+					<a href="#" class="btn btn-inverse btn-small">Eliminar</a>
+				<%end%>
+				<h6><a href="#">Ramon de les Olives</a></h6>
+				<p><em>23 de maig de 2012</em></p>
+				<%= post.content %>
+			</div>
+		<%end%>
+	</div>
 	
 	<%= will_paginate %>
 </div>
