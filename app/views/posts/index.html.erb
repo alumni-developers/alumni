@@ -11,7 +11,6 @@
 	<% end %>
 	
 	
-	<%= will_paginate %>
 	<div class="row">
 		<div class="span2 well events">
 			<h3>Events</h3>
@@ -38,5 +37,5 @@
 		<%end%>
 	</div>
 	
-	<%= will_paginate %>
+	<%= will_paginate :prev_label=>"<", :next_label=>">"%>
 </div>
