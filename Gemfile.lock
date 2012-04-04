@@ -30,8 +30,6 @@ GEM
     activesupport (3.0.9)
     annotate (2.4.0)
     arel (2.0.10)
-    bootstrap-will_paginate (0.0.7)
-      will_paginate
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -72,15 +70,18 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
-    will_paginate (3.0.pre2)
+    will_paginate (3.0.3)
+    will_paginate-bootstrap (0.2.0)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   annotate (= 2.4.0)
-  bootstrap-will_paginate
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
   rails (= 3.0.9)
   sqlite3
+  will_paginate (= 3.0.3)
+  will_paginate-bootstrap

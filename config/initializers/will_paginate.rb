@@ -1,3 +1,6 @@
+#require 'will_paginate/view_helpers/link_renderer'
+#require 'will_paginate/view_helpers/action_view'
+
 module WillPaginate
   module ActionView
     def will_paginate(collection = nil, options = {})
@@ -7,7 +10,7 @@ module WillPaginate
 
     class BootstrapLinkRenderer < LinkRenderer
       protected
-      
+
       def html_container(html)
         tag :div, tag(:ul, html), container_attributes
       end
@@ -19,6 +22,11 @@ module WillPaginate
       def previous_or_next_page(page, text, classname)
         tag :li, link(text, page || '#'), :class => [classname[0..3], classname, ('disabled' unless page)].join(' ')
       end
+
+      def gap
+        tag :li, link(super, '#'), :class => 'disabled'
+      end
+
     end
   end
 end

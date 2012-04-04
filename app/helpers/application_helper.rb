@@ -19,5 +19,7 @@ module ApplicationHelper
 #    params[1][:renderer] = BootstrapPaginationHelper::LinkRenderer
 #    will_paginate *params
 #  end
+
 end
 
+  
