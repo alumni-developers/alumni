@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[ :id])
     @title = @user.name
+    @jobs = @user.jobs.paginate(:page => params[:page])
   end
 
   def new

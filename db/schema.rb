@@ -10,7 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120319001713) do
+ActiveRecord::Schema.define(:version => 20120405150437) do
+
+  create_table "jobs", :force => true do |t|
+    t.integer  "s_year"
+    t.integer  "s_month"
+    t.integer  "s_day"
+    t.integer  "e_year"
+    t.integer  "e_month"
+    t.integer  "e_day"
+    t.string   "city"
+    t.string   "country"
+    t.string   "state_us"
+    t.string   "institution"
+    t.string   "department"
+    t.string   "position"
+    t.string   "content"
+    t.string   "type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "jobs", ["user_id", "s_year", "s_month", "s_day"], :name => "index_jobs_on_user_id_and_s_year_and_s_month_and_s_day"
 
   create_table "posts", :force => true do |t|
     t.string   "content"

@@ -83,6 +83,14 @@
 				<p><%= @user.likes %></p>
 			</section>
 			-->
+			<div class="feines">
+			<% unless @user.jobs.empty? %>
+        			<table class="jobs" summary="User jobs">
+         			<%= render @jobs %>
+        			</table>
+        			<%= will_paginate @jobs %>
+      			<% end %>	
+			</div>
 		</div>
 	</div>
 </div>
