@@ -1,0 +1,12 @@
+ <div class="field">
+    <%= label_tag :anyinici %>
+ <%= select("job", "s_year",2003..2014) %><br />
+  </div>
+  <div class="field">
+    <%= label_tag :mesinici %>
+ <%= select("job","s_month",{""=>"","Gener"=>"Gener","Febrer"=>2}) %><br />
+  </div>
+    <%= label_tag :diainici %>
+ <%= select("job","s_day",[""]|(1..31).to_a) %><br />
+  </div>
+

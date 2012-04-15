@@ -1,0 +1,12 @@
+ <div class="field">
+    <%= label_tag :anyfinal %>
+ <%= select("job", "e_year",2003..2014) %><br />
+  </div>
+  <div class="field">
+    <%= label_tag :mesfinal %>
+ <%= select("job","e_month",{""=>"","Gener"=>"Gener","Febrer"=>2}) %><br />
+  </div>
+    <%= label_tag :diafinal %>
+ <%= select("job","e_day",[""]|(1..31).to_a) %><br />
+  </div>
+

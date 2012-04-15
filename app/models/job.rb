@@ -16,16 +16,24 @@
 #  department  :string(255)
 #  position    :string(255)
 #  content     :string(255)
-#  type        :string(255)
+#  job_type        :string(255)
 #  user_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
 #
 
 class Job < ActiveRecord::Base
-   attr_accessible :s_year, :s_month, :s_day, :e_year, :e_month, :e_day, :city, :country, :state_us, :institution, :department, :position, :content, :type
+   attr_accessible :s_year, :s_month, :s_day, :s_date, :e_year, :e_month, :e_day, :e_date, :current_job, :city, :country, :state_us, :institution, :department, :position, :content, :job_type
    
    belongs_to :user
+   
+   before_save :compute_dates
 
+   private
+   def compute_dates
+       self.s_date=Time.now.utc
+   #   self.s_date=Time.utc(s_year,s_month,s_day)
+   #   self.e_date=Time.new(e_year,e_month,e_day)
+   end
 
 end
