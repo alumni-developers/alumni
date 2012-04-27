@@ -21,11 +21,11 @@
 			<ul class="nav nav-tabs">
 		  		<li class="active"><a href="#personal" data-toggle="tab">Personal</a></li>
 		  		<li><a href="#work" data-toggle="tab">Experiència Laboral</a></li>
-		 		<li><a href="#abroad">Estades Extranger</a></li>
-		 		<li><a href="#interests">Aficions</a></li>
+		 		<li><a href="#courses" data-toggle="tab">Estades Extranger</a></li>
+		 		<li><a href="#abroad" data-toggle="tab">Aficions</a></li>
 			</ul>
-			<div class="tab-content active">
-				<div class="tab-pane" id="personal">
+			<div class="tab-content">
+				<div class="tab-pane active" id="personal">
 					<%=render 'users/show_personal' %>
 				</div>
 				<div class="tab-pane" id="work">
@@ -52,21 +52,15 @@
 	 
 			<script>
 			  $(function () {
-			    $('#myTab a[href="#work"]').tab('show')
+			    $('#myTab a:last'').tab('show')
 			  })
 			</script>
-
 
 				<% if current_user? @user%>
                 <%= link_to "Crea nou treball ", newjob_path %>
 				<%= link_to "Crea nou curs ", newcourse_path %>
 				<%= link_to "Crea nova estada fora ", newabroad_path %>
 				<% end %>
-
-
-	            <%= link_to "Crea nou treball ", newjob_path %>
-				<%= link_to "Crea nou curs ", newcourse_path %>
-				<%= link_to "Crea nova estada fora ", newabroad_path %>
 
 			</div>
 		</div>
