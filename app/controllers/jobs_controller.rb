@@ -4,6 +4,9 @@ class JobsController < ApplicationController
   end
   
   def show
+    @job=Job.find(params[:id])
+    @title=@job.institution
+    @user=@job.user    
   end
 
   def createjob
@@ -47,5 +50,8 @@ class JobsController < ApplicationController
   end
 
   def destroy
+    Job.find(params[:id]).destroy
+    flash[:success] = "Job destroyed."
+    redirect_to current_user
   end
 end

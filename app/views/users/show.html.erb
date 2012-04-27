@@ -6,10 +6,10 @@
 		<ul class="nav nav-list well">
 			<li class="nav-header">Titulació</li>
 			<!--TODO link to filter search -->
-			<li><a href="#"><%= @user.degree1 %></a></li>
-			<li><a href="#"><%= @user.degree2 %></a></li>
+			<li><%=link_to @user.degree1, users_path(:search=>@user.degree1), :method =>'get' %></li>
+			<li><%=link_to @user.degree2, users_path(:search=>@user.degree2), :method =>'get' %></li>
 			<li class="nav-header">Promoció</li>
-			<li><a href="#"><%= @user.year %></a></li>
+			<li><%=link_to @user.year, users_path(:search=>@user.year), :method =>'get' %></li>
 		</ul>
 		</div>
 	</div>
@@ -81,6 +81,64 @@
 			    $('#myTab a[href="#work"]').tab('show')
 			  })
 			</script>
+<<<<<<< HEAD
+=======
+			<!--
+			<section id="abroad">
+				<div class="page-header">
+					<h2>Estades extranger</h2>
+				</div>
+				<p><%= @user.abroad %></p>
+			</section>
+			<section id="work">
+				<div class="page-header">
+					<h3>Experiència Laboral</h3>
+				</div>
+				<p><%= @user.work %></p>
+			</section>
+			<section id="likes">
+				<div class="page-header">
+					<h3>Interesos</h3>
+				</div>
+				<p><%= @user.likes %></p>
+			</section>
+			--> 
+			
+			<div class="feines">
+
+			<% unless @jobs.empty? %>
+				<li>Llista de feines</li>
+        			<table class="jobs" summary="User jobs">
+         			<%= render @jobs %>
+        			</table>
+            			<% end %>
+			</div>
+			
+			<div class="feines">
+			
+                        <% unless @courses.empty? %>
+				<li>Llista de cursos</li>
+        			<table class="jobs" summary="User jobs">
+         			<%= render @courses %>
+        			</table>
+            			<% end %>
+			</div>
+			
+			<div class="feines">
+
+			
+			<% unless @abroad.empty? %>
+				<li>Llista d'estades</li>
+
+        			<table class="jobs" summary="User jobs">
+         			<%= render @abroad %>
+        			</table>
+            			<% end %>
+
+                        <%= link_to "Crea nou treball ", newjob_path %>
+			<%= link_to "Crea nou curs ", newcourse_path %>
+			<%= link_to "Crea nova estada fora ", newabroad_path %>
+>>>>>>> ab941a6e326763db3722763152280e6cb8dd5d66
 			</div>
 		</div>
 	</div>

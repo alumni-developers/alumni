@@ -91,12 +91,6 @@
         <fieldset>
         <legend> Professional</legend>
         <div class="control-group">
-            <label class="control-label" for="textarea">Experiència Laboral</label>
-            <div class="controls">
-                <%= f.text_area :work, :class=>"input-xlarge", :rows=>5 %>
-            </div>
-        </div>
-        <div class="control-group">
             <label class="control-label" for="textarea">Estades a l'extranger</label>
             <div class="controls">
                 <%= f.text_area :abroad, :class=>"input-xlarge", :rows=>5 %>
@@ -111,6 +105,7 @@
         </div>
         </fieldset>
         </fieldset>
+	<%= debug @user %>
          <div class="form-actions">
             <button type="submit" class="btn btn-primary">Desar canvis</button>
             <button class="btn">Cancel·lar</button>

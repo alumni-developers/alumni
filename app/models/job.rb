@@ -28,12 +28,13 @@ class Job < ActiveRecord::Base
    belongs_to :user
    
    before_save :compute_dates
+   
+   default_scope :order => 'jobs.s_date DESC'
 
    private
    def compute_dates
-       self.s_date=Time.now.utc
-   #   self.s_date=Time.utc(s_year,s_month,s_day)
-   #   self.e_date=Time.new(e_year,e_month,e_day)
+       self.s_date=Time.utc(s_year,s_month,s_day)
+       self.e_date=Time.utc(e_year,e_month,e_day)
    end
 
 end

@@ -1,8 +1,11 @@
 <tr>
   <td class="job">
-    <span class="content"><%= job.institution %></span>
+    <span class="content"></span>
     <span class="timestamp">
-      <%= job.s_date %>, <%=job.job_type%>
+      <%=job.institution%> <%=job.position%> <%=job.s_date.strftime("Des del %m/%Y")%> <%=job.e_date.strftime("Al %m/%Y")%>
+	
+	<%= button_to "delete", job, :method => :delete,  :title => "Eliminar #{job.job_type}" %>
+      <%= link_to "Mira'n els detalls", job %>
     </span>
   </td>
 </tr>

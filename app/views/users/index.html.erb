@@ -41,8 +41,10 @@
 				<td><%= user.year %></td>
 				<% if current_user.admin? %>
 				<td>
-					<a href="#" class="btn btn-primary btn-small">Editar</a>
-					<a href="#" class="btn btn-inverse btn-small">Eliminar</a>
+					<!---a href="#" class="btn btn-primary btn-small">Editar</a> --->
+					<!---%= link_to "eliminar", user, :method => :delete, :confirm => "Segur?", :title => "Eliminar #{user.name}"%--->
+					<%= button_to "Eliminar", user, :method => :delete,  :title => "Eliminar #{user.name}",:confirm => "Estàs segur que vols eliminar l'usuari #{user.name}?"%>
+					<%= button_to "Editar", edit_user_path(user),  :title => "Editar #{user.name}", :method=>:get%>
 				</td>
 				<% end%>
 				</tr>
@@ -54,6 +56,8 @@
 	<!--Take a look at https://github.com/mislav/will_paginate/issues/158-->
 	<%= will_paginate :previous_label=>"<", :next_label=>">" %>
 </div> <!--./span8 -->
+
+
 </div>
 
 
