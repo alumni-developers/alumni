@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div class="entry">
 	<div class="span1 title_show"><h6><%=job.s_date.strftime("%m/%Y")%><%=job.e_date.strftime("- %m/%Y")%></h6></div>
 	<div>
@@ -11,19 +11,5 @@
 	</div>
 </div>
   	
-  	
-=======
-<tr>
-  <td class="job">
-    <span class="content"></span>
-    <span class="timestamp">
-      <%=job.institution%> <%=job.position%> <%=job.s_date.strftime("Des del %m/%Y")%> <%=job.e_date.strftime("Al %m/%Y")%>
-	
-	<%= button_to "delete", job, :method => :delete,  :title => "Eliminar #{job.job_type}" %>
-        <%= link_to "edit", edit_job_path(job),  :title => "Editar #{job.job_type}" %>
-      <%= link_to "Mira'n els detalls", job %>
-    </span>
-  </td>
-</tr>
->>>>>>> 0cd0e196851fd5ec87d72712609c9fd2d28f7684
+
 
