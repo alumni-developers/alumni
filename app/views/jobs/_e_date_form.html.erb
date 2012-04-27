@@ -1,12 +1,9 @@
  <div class="field">
-    <%= label_tag :anyfinal %>
- <%= select("job", "e_year",2003..2014) %><br />
-  </div>
-  <div class="field">
-    <%= label_tag :mesfinal %>
- <%= select("job","e_month",{""=>"","Gener"=>1,"Febrer"=>2,"Març"=>3,"Abril"=>4,"Maig"=>5,"Juny"=>6,"Juliol"=>7,"Agost"=>8,"Setembre"=>9,"Octubre"=>10,"Novembre"=>11,"Desembre"=>12}) %><br />
-  </div>
-    <%= label_tag :diafinal %>
- <%= select("job","e_day",[""]|(1..31).to_a) %><br />
-  </div>
+    <%= label_tag "Any de finalització" %>
+    <%= select("job", "e_year",2003..2014) %><br />
+</div>
+<div class="field">
+	<%= label_tag "Mes de finalitzacio" %>
+	<%= select("job","e_month",{""=>"","Gener"=>1,"Febrer"=>2,"Març"=>3,"Abril"=>4,"Maig"=>5,"Juny"=>6,"Juliol"=>7,"Agost"=>8,"Setembre"=>9,"Octubre"=>10,"Novembre"=>11,"Desembre"=>12}) %><br />
+</div>
 

@@ -26,53 +26,27 @@
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane" id="personal">
-					<div class="entry">
-						<div class="span1 title_show"><h6>Edat</h6></div>
-						<div>23</div>
-					</div>
-					<div class="entry">
-						<div class="span1 title_show"><h6>e-mail</h6></div>
-						<div><%= @user.email %></div>
-					</div>
-					<div class="entry">
-						<div class="span1 title_show"><h6>Telèfon contacte</h6></div>
-						<div>655677687</div>
-					</div>
-					<div class="entry">
-						<div class="span1 title_show"><h6>Web Personal</h6></div>
-						<div>www.exemple.com</div>
-					</div>
-					<div class="entry">
-						<div class="span1 title_show"><h6>Linkedin</h6></div>
-						<div>www.linkedin.com</div>
-					</div>
-					<div class="entry">
-						<div class="span1 title_show"><h6>Telèfon contacte</h6></div>
-						<div>655677687</div>
-					</div>
-					<div class="entry">
-						<div class="span1 title_show"><h6>Procedència</h6></div>
-						<div>Lleida</div>
-					</div>
-					<div class="entry">
-						<div class="span1 title_show"><h6>Actual residència</h6></div>
-						<div>Barcelona</div>
-					</div>
+					<%=render 'users/show_personal' %>
 				</div>
 				<div class="tab-pane active" id="work">
-					<% unless @user.jobs.empty? %>
-	        			<table class="jobs" summary="User jobs">
+					<% unless @jobs.empty? %>
 	         			<%= render @jobs %>
-	        			</table>
       				<% end %>	
-             		<%= link_to "Crea nou treball ", newjob_path %>
+             		<%= link_to "Crea nou treball", newjob_path %>
 				</div>
-				<div class="tab-pane" id="abroad">
-					<%= link_to "Crea nou curs ", newcourse_path %>
 				
+				<div class="tab-pane" id="courses">
+					<% unless @courses.empty? %>
+	         			<%= render @courses %>
+            		<% end %>
+					<%= link_to "Crea nou curs ", newcourse_path %>
 				</div>
-				<div class="tab-pane" id="interests">
-					<%= link_to "Crea nova estada fora ", newabroad_path %>
+				
+				<div class="tab-pane" id="abroad">
+					<% unless @abroad.empty? %>
+	         			<%= render @abroad %>
+            		<% end %>
+					<%= link_to "Crea nova estada fora", newabroad_path %>
 				</div>
 			</div>
 	 
@@ -81,64 +55,7 @@
 			    $('#myTab a[href="#work"]').tab('show')
 			  })
 			</script>
-<<<<<<< HEAD
-=======
-			<!--
-			<section id="abroad">
-				<div class="page-header">
-					<h2>Estades extranger</h2>
-				</div>
-				<p><%= @user.abroad %></p>
-			</section>
-			<section id="work">
-				<div class="page-header">
-					<h3>Experiència Laboral</h3>
-				</div>
-				<p><%= @user.work %></p>
-			</section>
-			<section id="likes">
-				<div class="page-header">
-					<h3>Interesos</h3>
-				</div>
-				<p><%= @user.likes %></p>
-			</section>
-			--> 
-			
-			<div class="feines">
 
-			<% unless @jobs.empty? %>
-				<li>Llista de feines</li>
-        			<table class="jobs" summary="User jobs">
-         			<%= render @jobs %>
-        			</table>
-            			<% end %>
-			</div>
-			
-			<div class="feines">
-			
-                        <% unless @courses.empty? %>
-				<li>Llista de cursos</li>
-        			<table class="jobs" summary="User jobs">
-         			<%= render @courses %>
-        			</table>
-            			<% end %>
-			</div>
-			
-			<div class="feines">
-
-			
-			<% unless @abroad.empty? %>
-				<li>Llista d'estades</li>
-
-        			<table class="jobs" summary="User jobs">
-         			<%= render @abroad %>
-        			</table>
-            			<% end %>
-
-                        <%= link_to "Crea nou treball ", newjob_path %>
-			<%= link_to "Crea nou curs ", newcourse_path %>
-			<%= link_to "Crea nova estada fora ", newabroad_path %>
->>>>>>> ab941a6e326763db3722763152280e6cb8dd5d66
 			</div>
 		</div>
 	</div>

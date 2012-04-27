@@ -1,12 +1,9 @@
- <div class="field">
-    <%= label_tag :anyinici %>
- <%= select("job", "s_year",2003..2014) %><br />
-  </div>
-  <div class="field">
-    <%= label_tag :mesinici %>
- <%= select("job","s_month",{""=>"","Gener"=>1,"Febrer"=>2,"Març"=>3,"Abril"=>4,"Maig"=>5,"Juny"=>6,"Juliol"=>7,"Agost"=>8,"Setembre"=>9,"Octubre"=>10,"Novembre"=>11,"Desembre"=>12}) %><br />
-  </div>
-    <%= label_tag :diainici %>
- <%= select("job","s_day",[""]|(1..31).to_a) %><br />
-  </div>
+<div class="field">
+	<%= label_tag "Any inici" %>
+ 	<%= select("job", "s_year",2003..2014) %><br />
+</div>
+<div class="field">
+	<%= label_tag "Mes d'inici" %>
+ 	<%= select("job","s_month",{""=>"","Gener"=>1,"Febrer"=>2,"Març"=>3,"Abril"=>4,"Maig"=>5,"Juny"=>6,"Juliol"=>7,"Agost"=>8,"Setembre"=>9,"Octubre"=>10,"Novembre"=>11,"Desembre"=>12}) %><br />
+</div>
 

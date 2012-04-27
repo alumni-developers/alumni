@@ -1,39 +1,48 @@
-<h1>Create a new job</h1>
+<div class="row">
+    <div class="span8 offset2">
+    <h2>Afegir nou treball</h2>
+    
+    
 
-<%= form_for(@job, :url => {:action=>"createjob"}) do |f| %>
-    <%= render 'shared/error_messages', :object=>f.object %>
-  <div class="field">
-    <%= f.label :empresa %>
-    <%= f.text_field :institution %><br />
-  </div>
-  <div class="field">
-    <%= f.label :departament %>
-    <%= f.text_field :department %><br />
-  </div>  
-  <div class="field">
-    <%= f.label :posició %>
-    <%= f.text_field :position %><br />
-  </div>  
-  <div class="field">
-    <%= f.label :feinaactual %>
-    <%= f.check_box :current_job %><br />
-  </div>           
- <%=render 'jobs/s_date_form' %>
- <%=render 'jobs/e_date_form' %>
-  <div class="field">
-    <%= f.label :país %>
-    <%= f.text_field :country %><br />
-  </div>
-  <div class="field">
-    <%= f.label :ciutat %>
-    <%= f.text_field :city %><br />
-  </div>
-  <div class="field">
-    <%= f.label :descripció %>
-    <%= f.text_field :content %><br />
-  </div>
-  <div class="actions">
-    <%= f.submit "Create it" %>
-  </div>
-<% end %>
+	<%= form_for(@job, :url => {:action=>"createjob", :class=>"form-horizontal"}) do |f| %>
+	    <%= render 'shared/error_messages', :object=>f.object %>
+	  <div class="field">
+	    <%= f.label "Empresa" %>
+	    <%= f.text_field :institution %><br />
+	  </div>
+	  <div class="field">
+	    <%= f.label :Departament %>
+	    <%= f.text_field :department %><br />
+	  </div>  
+	  <div class="field">
+	    <%= f.label :Posició %>
+	    <%= f.text_field :position %><br />
+	  </div>  
+	  
+	  
+	  <div class="field">
+	    <%= f.check_box :current_job %> Es la teva feina actual?<br />
+	    <p></p>
+	  </div>           
+	 <%=render 'jobs/s_date_form' %>
+	 <%=render 'jobs/e_date_form' %>
+	  <div class="field">
+	    <%= f.label :País %>
+	    <%= f.text_field :country %><br />
+	  </div>
+	  <div class="field">
+	    <%= f.label :Ciutat %>
+	    <%= f.text_field :city %><br />
+	  </div>
+	  <div class="field">
+	    <%= f.label :Descripció %>
+	    <p class="help-block">Brey descripicó del lloc així com les teves impressions del mateix.</p>
+	    <%= f.text_field :content %><br />
+	  </div>
+	  <div class="actions">
+	    <%= f.submit "Crear!" %>
+	  </div>
+	<% end %>
+	</div>
+</div>
 

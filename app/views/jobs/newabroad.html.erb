@@ -1,39 +1,44 @@
-<h1>Create a new abroad</h1>
+<div class="row">
+    <div class="span8 offset2">
+    <h2>Afegir estada al extranger</h2>
 
-<%= form_for(@job, :url => {:action=>"createabroad"}) do |f| %>
-    <%= render 'shared/error_messages', :object=>f.object %>
-  <div class="field">
-    <%= f.label :Institució_que_impartia %>
-    <%= f.text_field :institution %><br />
-  </div>
-  <div class="field">
-    <%= f.label :departament %>
-    <%= f.text_field :department %><br />
-  </div>  
-  <div class="field">
-    <%= f.label :tipus_estada %>
-    <%= f.text_field :position %><br />
-  </div>  
-  <div class="field">
-    <%= f.label :estada_actual %>
-    <%= f.check_box :current_job %><br />
-  </div>           
- <%=render 'jobs/s_date_form' %>
- <%=render 'jobs/e_date_form' %>
-  <div class="field">
-    <%= f.label :país %>
-    <%= f.text_field :country %><br />
-  </div>
-  <div class="field">
-    <%= f.label :ciutat %>
-    <%= f.text_field :city %><br />
-  </div>
-  <div class="field">
-    <%= f.label :descripció %>
-    <%= f.text_field :content %><br />
-  </div>
-  <div class="actions">
-    <%= f.submit "Create it" %>
-  </div>
-<% end %>
-
+	<%= form_for(@job, :url => {:action=>"createabroad",:class=>"form-horizontal"}) do |f| %>
+	    <%= render 'shared/error_messages', :object=>f.object %>
+	    	 <fieldset>
+	         <legend>Personal</legend>
+	  <div class="field">
+	    <%= f.label :Institució_que_impartia %>
+	    <%= f.text_field :institution %><br />
+	  </div>
+	  <div class="field">
+	    <%= f.label :departament %>
+	    <%= f.text_field :department %><br />
+	  </div>  
+	  <div class="field">
+	    <%= f.label :tipus_estada %>
+	    <%= f.text_field :position %><br />
+	  </div>  
+	  <div class="field">
+	    <%= f.label :estada_actual %>
+	    <%= f.check_box :current_job %><br />
+	  </div>           
+	 <%=render 'jobs/s_date_form' %>
+	 <%=render 'jobs/e_date_form' %>
+	  <div class="field">
+	    <%= f.label :país %>
+	    <%= f.text_field :country %><br />
+	  </div>
+	  <div class="field">
+	    <%= f.label :ciutat %>
+	    <%= f.text_field :city %><br />
+	  </div>
+	  <div class="field">
+	    <%= f.label :descripció %>
+	    <%= f.text_field :content %><br />
+	  </div>
+	  <div class="actions">
+	    <%= f.submit "Create it" %>
+	  </div>
+	<% end %>
+	</div>
+</div>
