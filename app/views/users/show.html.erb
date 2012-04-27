@@ -114,10 +114,11 @@
          			<%= render @abroad %>
         			</table>
             			<% end %>
-
-                        <%= link_to "Crea nou treball ", newjob_path %>
-			<%= link_to "Crea nou curs ", newcourse_path %>
-			<%= link_to "Crea nova estada fora ", newabroad_path %>
+			<% if current_user? @user%>
+                        	<%= link_to "Crea nou treball ", newjob_path %>
+				<%= link_to "Crea nou curs ", newcourse_path %>
+				<%= link_to "Crea nova estada fora ", newabroad_path %>
+			<% end %>
 			</div>
 		</div>
 	</div>

@@ -17,7 +17,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :department
       t.string :position
       t.string :content
-      t.string :job_type
+      t.string :job_type #text
       t.integer :user_id
 
       t.timestamps
