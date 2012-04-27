@@ -71,4 +71,10 @@ class UsersController < ApplicationController
 		@user=User.find(params[ :id])
 		redirect_to(users_path) unless (current_user?(@user) or current_user.admin?)
 	end
+	
+	def tab
+	   respond_to do |format|
+	     format.js
+	   end
+	end
 end
