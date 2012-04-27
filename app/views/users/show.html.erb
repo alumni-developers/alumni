@@ -19,13 +19,13 @@
 		</div>
 		<div class="span6 top-sep3">
 			<ul class="nav nav-tabs">
-		  		<li class="active"><a href="#personal">Personal</a></li>
-		  		<li><%= link_to "Experiencia Laboral", {:action => 'tab'}, :remote => true %><</li>
+		  		<li class="active"><a href="#personal" data-toggle="tab">Personal</a></li>
+		  		<li><a href="#work" data-toggle="tab">Experiència Laboral</a></li>
 		 		<li><a href="#abroad">Estades Extranger</a></li>
 		 		<li><a href="#interests">Aficions</a></li>
 			</ul>
 			<div class="tab-content">
-				<div class="tab-pane active" id="personal">
+				<div class="tab-pane" id="personal">
 					<div class="entry">
 						<div class="span1 title_show"><h6>Edat</h6></div>
 						<div>23</div>
@@ -33,6 +33,18 @@
 					<div class="entry">
 						<div class="span1 title_show"><h6>e-mail</h6></div>
 						<div><%= @user.email %></div>
+					</div>
+					<div class="entry">
+						<div class="span1 title_show"><h6>Telèfon contacte</h6></div>
+						<div>655677687</div>
+					</div>
+					<div class="entry">
+						<div class="span1 title_show"><h6>Web Personal</h6></div>
+						<div>www.exemple.com</div>
+					</div>
+					<div class="entry">
+						<div class="span1 title_show"><h6>Linkedin</h6></div>
+						<div>www.linkedin.com</div>
 					</div>
 					<div class="entry">
 						<div class="span1 title_show"><h6>Telèfon contacte</h6></div>
@@ -47,22 +59,30 @@
 						<div>Barcelona</div>
 					</div>
 				</div>
-				<div class="tab-pane" id="work">
-				
+				<div class="tab-pane active" id="work">
+					<% unless @user.jobs.empty? %>
+	        			<table class="jobs" summary="User jobs">
+	         			<%= render @jobs %>
+	        			</table>
+      				<% end %>	
+             		<%= link_to "Crea nou treball ", newjob_path %>
 				</div>
 				<div class="tab-pane" id="abroad">
+					<%= link_to "Crea nou curs ", newcourse_path %>
 				
 				</div>
 				<div class="tab-pane" id="interests">
-					
+					<%= link_to "Crea nova estada fora ", newabroad_path %>
 				</div>
 			</div>
 	 
 			<script>
 			  $(function () {
-			    $('.tabs a:last').tab('show')
+			    $('#myTab a[href="#work"]').tab('show')
 			  })
 			</script>
+<<<<<<< HEAD
+=======
 			<!--
 			<section id="abroad">
 				<div class="page-header">
@@ -114,11 +134,19 @@
          			<%= render @abroad %>
         			</table>
             			<% end %>
+<<<<<<< HEAD
 			<% if current_user? @user%>
                         	<%= link_to "Crea nou treball ", newjob_path %>
 				<%= link_to "Crea nou curs ", newcourse_path %>
 				<%= link_to "Crea nova estada fora ", newabroad_path %>
 			<% end %>
+=======
+
+                        <%= link_to "Crea nou treball ", newjob_path %>
+			<%= link_to "Crea nou curs ", newcourse_path %>
+			<%= link_to "Crea nova estada fora ", newabroad_path %>
+>>>>>>> ab941a6e326763db3722763152280e6cb8dd5d66
+>>>>>>> 6c749769d26b49754de8f90b79f86d8f790c5345
 			</div>
 		</div>
 	</div>
