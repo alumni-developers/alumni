@@ -18,7 +18,7 @@ Alumni::Application.routes.draw do
   match '/createcourse', :to=> 'jobs#createcourse'
   match '/newabroad', :to=> 'jobs#newabroad'
   match '/createabroad', :to=> 'jobs#createabroad'
-
+  
   root :to => 'pages#home'
   
   # The priority is based upon order of creation:

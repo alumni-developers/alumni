@@ -1,14 +1,12 @@
-<div class="entry">
-	<div class="span1 title_show"><h6><%=job.s_date.strftime("%m/%Y")%><%=job.e_date.strftime("- %m/%Y")%></h6></div>
-	<div>
-		<strong><%=job.institution%></strong>, <%=job.department%><br />
-			<%=job.position%> <br />
-			Lloc: <%=job.city%>, <%=job.country%><br />
-			
-			<%= button_to "Borrar", job, :method => :delete,  :title => "Eliminar #{job.job_type}" %>	
-			<%= link_to "Mira'n els detalls", job, :class=>"btn btn-primary btn-small" %>
-	</div>
-</div>
-  	
-  	
+<tr>
+  <td class="job">
+    <span class="content"></span>
+    <span class="timestamp">
+      <%=job.institution%> <%=job.position%> <%=job.s_date.strftime("Des del %m/%Y")%> <%=job.e_date.strftime("Al %m/%Y")%>
+	
+	<%= button_to "delete", job, :method => :delete,  :title => "Eliminar #{job.job_type}" %>
+      <%= link_to "Mira'n els detalls", job %>
+    </span>
+  </td>
+</tr>
 

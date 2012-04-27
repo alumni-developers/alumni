@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="span9 offset1 top-sep3">
 	<div class="span2">
 		<div class="sidebar-nav">
@@ -129,6 +130,123 @@
 			    $('#myTab a[href="#work"]').tab('show')
 			  })
 			</script>
+=======
+<div class="row">
+    <div class="span8 offset2">
+    <h2>Editar Usuari</h2>
+    <%= form_for(@user, :html=>{:class=>"form-horizontal"}) do |f| %>
+    <!--TODO Error messages with Twitter Bootsrap falvour -->
+    <%= render 'shared/error_messages', :object => f.object %>
+      	 <fieldset>
+         <legend>Personal</legend>
+         
+         <!--TODO can the name be changed? -->
+         <div class="control-group">
+             <label class="control-label" for="input01">Nom i Cognoms</label>
+             <div class="controls">
+             	<%= f.text_field :name, :class=> "input-xlarge" %>
+             </div>
+         </div>
+                  
+         <div class="control-group">
+             <label class="control-label" for="input01">e-mail</label>
+             <div class="controls">
+             	<%= f.text_field :email, :class=> "input-xlarge" %>           
+             </div>
+         </div>
+         <!--TODO Not making password compulsory to change--> 
+         <div class="control-group">
+             <label class="control-label" for="input01">Contrasenya</label>
+             <div class="controls">
+             	<%= f.password_field :password, :class=>"input-clarge" %>
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label" for="input01">Confirmació</label>
+             <div class="controls">
+             	<%= f.password_field :password_confirmation, :class=>"input-clarge" %>
+             </div>
+         </div>
+         
+         <!--TODO link the NewLetter checkbox -->
+         <div class="control-group">
+             <label class="control-label" for="optionsCheckbox">Newsletter</label>
+             <div class="controls">
+             <label class="checkbox">
+                 <input type="checkbox" id="optionsCheckbox" value="option1">
+                 Vull rebre informació per e-mail de la NewsLetter dels Alumni
+             </label>
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label" for="select01">Carrera 1</label>
+	         <div class="controls">
+	             <%= select("user", "degree1", {"Telecomunicacions"=>"Telecomunicacions","Matemàtiques"=>"Matemàtiques","Industrials"=>"Industrials", "Camins"=>"Camins", "Informàtica"=>"Informàtica"}) %>
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label" for="select01">Carrera 2</label>
+	         <div class="controls">
+	             <%= select("user", "degree2", {"Telecomunicacions"=>"Telecomunicacions","Matemàtiques"=>"Matemàtiques","Industrials"=>"Industrials", "Camins"=>"Camins", "Informàtica"=>"Informàtica"}) %>
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label" for="select01">Promoció</label>
+	         <div class="controls">
+	             <%= select("user", "year", {"2003"=>"2003","2004"=>"2004","2005"=>"2005", "2006"=>"2006", "2007"=>"2007","2008"=>"2008","2009"=>"2009","2010"=>"2010","2011"=>"2011"}) %>
+	             <p class="help-block">Selecciona l'any que vas entrar al CIFS</p>
+             </div>
+         </div>
+          
+         <div class="control-group">
+             <label class="control-label" for="textarea">Interesos</label>
+             <div class="controls">
+             	<%= f.text_area :likes, :class=>"input-xlarge", :rows=>3 %>
+             <p class="help-block">Descriu amb tags les coses que t'apassionen</p>
+             </div>
+        </div>
+        
+        <div class="control-group">
+             <label class="control-label" for="input01">Imatge</label>
+             <div class="controls">
+             	<%= gravatar_for @user %>
+  				<a href="http://gravatar.com/emails">Canviar</a>
+             <p class="help-block">Escollir imatge des del site Gravatar</p>
+             </div>
+         </div>
+        </fieldset>
+        
+        <!-- Professional -->
+        <fieldset>
+        <legend> Professional</legend>
+        <div class="control-group">
+            <label class="control-label" for="textarea">Estades a l'extranger</label>
+            <div class="controls">
+                <%= f.text_area :abroad, :class=>"input-xlarge", :rows=>5 %>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="textarea">Concursos</label>
+            <div class="controls">
+                
+                <textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+            </div>
+        </div>
+        </fieldset>
+        </fieldset>
+	     <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Desar canvis</button>
+            <button class="btn">Cancel·lar</button>
+          </div>
+    <% end %>
+    </div>
+</div>
+  
+>>>>>>> 0cd0e196851fd5ec87d72712609c9fd2d28f7684
 
 			</div>
 		</div>
