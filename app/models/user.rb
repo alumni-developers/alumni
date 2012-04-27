@@ -38,9 +38,12 @@ class User < ActiveRecord::Base
 
 
   #Automatically create the virtual attribute 'password_confirmation'
-  validates :password, :presence=>true,:confirmation=>true,:length=>{:within=>6..40}
+  #validates :password, :presence=>true,:confirmation=>true,:length=>{:within=>6..40}
 
-  before_save :encrypt_password
+  validates :password, :presence =>true, :confirmation => true, :length => { :within => 6..40 }, :on => :create
+  validates :password, :confirmation => true, :length => { :within => 6..40 }, :on => :update, :unless => lambda{ |user| user.password.blank? } 
+
+  before_save :encrypt_password, :unless => Proc.new{|u| u.password.blank?}
 
 
   def has_password?(submitted_password)
@@ -132,10 +135,12 @@ class User < ActiveRecord::Base
          end
        end
        
-       where(search_cond,search_param)
+       [search_cond,search_param]
+       #where(search_cond,search_param)
 
     else
-      find(:all)
+       []
+      #find(:all)
     end
   end
 

@@ -17,19 +17,25 @@ class UsersController < ApplicationController
 
   def index
     @title = "Tots els alumni"
-    @users = User.search(params[:search])
-    if @users.empty?
-      flash.now[:notice] = "No s'ha trobat cap resultat, es mostra el directori
-                        complet."
-      @users = User.all
+    search_p=User.search(params[:search])
+    if !search_p.empty?
+       users_relation=User.where(search_p[0],search_p[1])
+       if users_relation.empty?
+          flash.now[:notice] = "No s'ha trobat cap resultat, es mostra el directori complet."
+         users_relation = User
+       end
+    else
+       users_relation = User
     end
-    @users = User.paginate(:page=>params[:page],:per_page=>10)
+    @users = users_relation.paginate(:page=>params[:page],:per_page=>10)
   end
   
   def show
     @user = User.find(params[ :id])
     @title = @user.name
-    @jobs = @user.jobs.paginate(:page => params[:page])
+    @jobs = @user.jobs.find(:all, :conditions => ['job_type LIKE ?', "job"])
+    @courses = @user.jobs.find(:all, :conditions => ['job_type LIKE ?', "course"])
+    @abroad = @user.jobs.find(:all, :conditions => ['job_type LIKE ?', "abroad"])
   end
 
   def new
@@ -43,8 +49,9 @@ class UsersController < ApplicationController
 
   def update
     @user=User.find(params[ :id])
-    if @user.update_attributes(params[ :user])
+    if @user.update_attributes(params[:user])
       flash[ :success] = "Perfil actualitzat."
+      sign_in @user
       redirect_to @user
     else
       @title = "Editar usuari"
