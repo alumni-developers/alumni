@@ -1,19 +1,24 @@
+<tr>
+	<td><h6><%=s_date(job)%><%="-"%><%=e_date(job)%></h6></td>
+	<td>
+		<strong><%=job.institution%></strong>, <%=job.department%>. <%=job.city%>, <%=job.country%>.<br />
+		<em><%=job.position%></em><br />	
+		<div id="<%= job.id%>" class="collapse"> <br />
+			<%= job.content %><p></p>
+		</div>
+	</td>
+	<td>
+		<% if @title=="Editar usuari" %>
+			<%= button_to "Borrar", job, :method => :delete,  :title => "Eliminar #{job.job_type}",:confirm => "Estàs segur que vols eliminar aquesta entrada?" %>
+			<%= link_to "Edita", edit_job_path(job), :class=>"btn btn-primary btn-small" %>
+		<% end %>
+		<!--<%= link_to "Mira'n els detalls", job, :class=>"btn btn-primary btn-small" %>-->
+		<button class="btn btn-info" data-toggle="collapse" data-target="#<%= job.id%>">
+  		Mes detalls
+		</button>
+		
+		
+	</td>
+</tr>
 
-<div class="entry">
-	<div class="span1 title_show"><h6><%=s_date(job)%><%="-"%><%=e_date(job)%></h6></div>
-	<div>
-		<strong><%=job.institution%></strong>, <%=job.department%><br />
-			<%=job.position%> <br />
-			Lloc: <%=job.city%>, <%=job.country%><br />
-			
-				
-			<% if @title=="Editar usuari" %>
-				<%= button_to "Borrar", job, :method => :delete,  :title => "Eliminar #{job.job_type}",:confirm => "Estàs segur que vols eliminar aquesta entrada?" %>
-				<%= link_to "Edita", edit_job_path(job), :class=>"btn btn-primary btn-small" %>
-			<% end %>
-			<%= link_to "Mira'n els detalls", job, :class=>"btn btn-primary btn-small" %>
-	</div>
-</div>
-  	
-
-
+	

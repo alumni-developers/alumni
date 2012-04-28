@@ -30,16 +30,24 @@
 				</div>
 				<div class="tab-pane" id="work">
 					<% unless @jobs.empty? %>
-	         			<%= render @jobs %>
+					<table class="table table-striped">
+							<tbody>
+	         				<%= render @jobs %>
+	         				</tbody>
+					</table>
       				<% end %>
 				<% if current_user? @user %>	
-             				<%= link_to "Crea nou treball", newjob_path %>
+             		<%= link_to "Crea nou treball", newjob_path %>
 				<% end %>
 				</div>
 				
 				<div class="tab-pane" id="courses">
 					<% unless @courses.empty? %>
-	         			<%= render @courses %>
+					<table class="table">
+						<tbody>
+						<%= render @courses %>
+						</tbody>
+					</table>	
             		<% end %>	
 					<% if current_user? @user %>
 						<%= link_to "Crea nou curs ", newcourse_path %>
@@ -60,9 +68,7 @@
 			  $(function () {
 			    $('#myTab a:last'').tab('show')
 			  })
-			</script>
-
-				
+			</script>			
 			</div>
 		</div>
 	</div>
