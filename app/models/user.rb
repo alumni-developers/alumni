@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :jobs, :dependent => :destroy
+  #has_many :jobs
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

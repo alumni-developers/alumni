@@ -56,9 +56,9 @@ class JobsController < ApplicationController
     @job  = current_user.jobs.find(params[:id])
     if @job.update_attributes(params[:job])
       flash[:success] = "Entrada actualitzada!"
-      redirect_to current_user
+      redirect_to edit_user_path(current_user)
     else
-      render 'pages/home'
+      render edit_job_path(@job)
     end
   end
   def edit
@@ -66,11 +66,15 @@ class JobsController < ApplicationController
     @title = "Edita una entrada"
   end
 
-
-
   def destroy
-    Job.find(params[:id]).destroy
-    flash[:success] = "Job destroyed."
-    redirect_to current_user
+    flash[:success] = "entra"
+    if current_user.jobs.find(params[:id]).destroy
+       flash[:success] = "Job destroyed."
+    else
+       flash[:success] = "Que coi passa?"
+    end
+    #redirect_to users_path
+    redirect_to edit_user_path(current_user)
+    #redirect_to current_user
   end
 end
