@@ -8,16 +8,12 @@
 		</div>
 	</td>
 	<td>
+		<button class="btn btn-info" data-toggle="collapse" data-target="#<%= job.id%>">Mes detalls</button>
 		<% if @title=="Editar usuari" %>
-			<%= button_to "Borrar", job, :method => :delete,  :title => "Eliminar #{job.job_type}",:confirm => "Estàs segur que vols eliminar aquesta entrada?" %>
-			<%= link_to "Edita", edit_job_path(job), :class=>"btn btn-primary btn-small" %>
-		<% end %>
-		<!--<%= link_to "Mira'n els detalls", job, :class=>"btn btn-primary btn-small" %>-->
-		<button class="btn btn-info" data-toggle="collapse" data-target="#<%= job.id%>">
-  		Mes detalls
-		</button>
-		
-		
+			<%= button_to "Borrar", job, :method => :delete,  :title => "Eliminar #{job.job_type}",:confirm => "Estàs segur que vols eliminar aquesta entrada?", :class=>"btn btn-small pull-right" %>
+			<%= link_to "Edita", edit_job_path(job), :class=>"btn btn-small pull-right" %>
+		<% else %>
+		<% end %>	
 	</td>
 </tr>
 

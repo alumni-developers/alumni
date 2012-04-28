@@ -36,31 +36,27 @@
 	         			</tbody>
 					</table>
       				<% end %>
-				<% if current_user? @user %>	
-             		<%= link_to "Crea nou treball", newjob_path %>
-				<% end %>
+		
 				</div>
 				
 				<div class="tab-pane" id="courses">
 					<% unless @courses.empty? %>
-					<table class="table">
+					<table class="table table-striped">
 						<tbody>
 						<%= render @courses %>
 						</tbody>
 					</table>	
             		<% end %>	
-					<% if current_user? @user %>
-						<%= link_to "Crea nou curs ", newcourse_path %>
-					<% end %>
 				</div>
 				
 				<div class="tab-pane" id="abroad">
 					<% unless @abroad.empty? %>
+					<table class="table table-striped">
+						<tbody>
 	         			<%= render @abroad %>
+	         			</tbody>
+					</table>
             		<% end %>
-					<% if current_user? @user %>
-						<%= link_to "Crea nova estada fora", newabroad_path %>
-					<% end %>
 				</div>
 			</div>
 	 

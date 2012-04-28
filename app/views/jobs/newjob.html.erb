@@ -5,7 +5,7 @@
 	<%= form_for(@job, :url => {:action=>"createjob", :class=>"form-horizontal"}) do |f| %>
 	    <%= render 'shared/error_messages', :object=>f.object %>
 	  <div class="field">
-	    <%= f.label "Empresa" %>
+	    <%= f.label :Empresa %>
 	    <%= f.text_field :institution %><br />
 	  </div>
 	  <div class="field">
@@ -32,7 +32,7 @@
 	  </div>
 	  <div class="field">
 	    <%= f.label :Descripció %>
-	    <p class="help-block">Brey descripicó del lloc així com les teves impressions del mateix.</p>
+	    <p class="help-block">Breu descripicó del lloc així com les teves impressions del mateix.</p>
 	    <%= f.text_field :content %><br />
 	  </div>
 	  <div class="actions">

@@ -29,21 +29,36 @@
 				<%= render 'users/edit_personal' %>
 				</div>
 				<div class="tab-pane" id="work">
-					<%= render @jobs %>
+					<table class="table table-striped">
+						<tbody>
+						<%= render @jobs %>
+						</tbody>
+					</table>	
+             		<%= link_to "Afegir lloc de treball", newjob_path, :class=>"btn btn-success"  %>
 				</div>
 				
 				<div class="tab-pane" id="courses">
-					<%= render @jobs %>
+					<table class="table table-striped">
+						<tbody>
+						<%= render @jobs %>
+						</tbody>
+					</table>	
+					<%= link_to "Afegir curs ", newcourse_path, :class=>"btn btn-success"  %>
 				</div>
 				
 				<div class="tab-pane" id="abroad">
-					<%= render @jobs %>
+					<table class="table table-striped">
+						<tbody>
+						<%= render @jobs %>
+						</tbody>
+					</table>	
+					<%= link_to "Afegir estada a l'extranger", newabroad_path, :class=>"btn btn-success" %>
 				</div>
 			</div>
 	 
 			<script>
 			  $(function () {
-			    $('#myTab a[href="#work"]').tab('show')
+			    $('#myTab a[href="#work"]').tab('show')s
 			  })
 			</script>
 			</div>
