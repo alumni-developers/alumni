@@ -2,8 +2,8 @@
 <div class="entry">
 	<div class="span1 title_show"><h6><%=s_date(job)%><%="-"%><%=e_date(job)%></h6></div>
 	<div>
-		<strong><%=job.institution%></strong>, <%=job.department%><br />
-			<%=job.position%> <br />
+		<% if job.job_type != "abroad" %><strong><%=job.institution%></strong>, <%=job.department%><br />
+			<%=job.position%> <br /> <%end%>
 			Lloc: <%=job.city%>, <%=job.country%><br />
 			
 				

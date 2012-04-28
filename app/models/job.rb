@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: jobs
+# Table name: jobs #job/course/abroad
 #
 #  id          :integer         not null, primary key
 #  s_year      :integer
@@ -12,9 +12,9 @@
 #  city        :string(255)
 #  country     :string(255)
 #  state_us    :string(255)
-#  institution :string(255)
-#  department  :string(255)
-#  position    :string(255)
+#  institution :string(255) #Empresa/institucio/res
+#  department  :string(255) #Departament/nom_curs/res
+#  position    :string(255) #Position/tipus_curs/res
 #  content     :string(255)
 #  job_type        :string(255)
 #  user_id     :integer
