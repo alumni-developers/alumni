@@ -1,26 +1,15 @@
 module JobsHelper
 
-<<<<<<< HEAD
-  def job_title (job)
-      case job.job_type
-        	when "job"
-        		{:job_title => "de treball", :empresa => "Empresa", :departament => "Departament", :position => "Posicio", :currentjob => "Feina actual" }
-        	when "course"
-        		{:job_title => "de curs", :empresa => "Institucio que ho impartia", :departament => "Departament", :position => "Tipus de curs", :currentjob => "En curs"}
-          when "abroad"
-        		{:job_title => "d'estada a l'estranger"}
-      end
-=======
+
   def job_text (job)
      case job.job_type
-	when "job"
-		{:job_title => "de treball", :empresa => "Empresa", :departament => "Departament", :position => "Posicio", :currentjob => "Feina actual" }
-	when "course"
-		{:job_title => "de curs", :empresa => "Institucio que l'impartia", :departament => "Nom del curs", :position => "Tipus de curs", :currentjob => "En curs"}
-        when "abroad"
-		{:job_title => "d'estada a l'estranger", :currentjob => "Estada actual"}
-     end
->>>>>>> 23b115056e6ffb44e76cf38357f5331dd912f427
+      	 when "job"
+      		{:job_title => "de treball", :empresa => "Empresa", :departament => "Departament", :position => "Posicio", :currentjob => "Feina actual" }
+      	 when "course"
+      		{:job_title => "de curs", :empresa => "Institucio que l'impartia", :departament => "Nom del curs", :position => "Tipus de curs", :currentjob => "En curs"}
+              when "abroad"
+      		{:job_title => "d'estada a l'estranger", :currentjob => "Estada actual"}
+      end
   end
   
   def date_format (month)
