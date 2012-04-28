@@ -14,17 +14,17 @@ module JobsHelper
   
   def date_format (month)
      if month.nil?
-	"%Y"
+	     "%Y"
      else
-	"%m/%Y"
+	     "%m/%Y"
      end
   end  
 
   def e_date (job)
      if job.current_job==1
-	"Avui"
+	     "Avui"
      else
- 	job.e_date.strftime(date_format(job.e_month))
+ 	      job.e_date.strftime(date_format(job.e_month))
      end
   end
 
@@ -34,7 +34,7 @@ module JobsHelper
   
   def e_date_long (job)
      if job.current_job==1
-	" fins avui."
+	     " fins avui."
      else
  	job.e_date.strftime(" fins al #{date_format(job.e_month)}.")
      end

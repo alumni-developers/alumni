@@ -69,7 +69,7 @@ class JobsController < ApplicationController
   def destroy
     flash[:success] = "entra"
     if current_user.jobs.find(params[:id]).destroy
-       flash[:success] = "Job destroyed."
+       flash[:success] = "Treball borrat."
     else
        flash[:success] = "Que coi passa?"
     end

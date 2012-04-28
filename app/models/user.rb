@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # == Schema Information
 #
 # Table name: users
@@ -15,16 +13,21 @@
 #  year               :integer
 #  likes              :text
 #  linkedin           :string(255)
-#  abroad             :text
-#  work               :text
 #  admin              :boolean         default(FALSE)
 #  degree2            :string(255)
+#  blog               :string(255)
+#  age                :integer
+#  telephone          :string(255)
+#  procedence         :string(255)
+#  current_location   :string(255)
 #
+
+# encoding: UTF-8
 
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :degree1, :degree2, :year, :likes, :linkedin, :abroad, :work
+  attr_accessible :name, :email, :password, :password_confirmation, :degree1, :degree2, :year, :likes, :linkedin, :blog, :age, :procedence, :current_location, :telephone
   attr_accessor :password
 
   has_many :posts
@@ -78,31 +81,31 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.search_degree(search)
-    case search.downcase
-      when "telecos","telecomunicacions","telecomunicaciones"
-         "Telecomunicacions"
-      when "mates","matematiques","matemàtiques","matematicas","matemáticas"
-         "Matemàtiques"
-      when "informatica","informàtica","informática"
-         "Informàtica"
-      when "camins","caminos"
-         "Camins"
-      when "industrials","indus","industriales"
-         "Industrials"
-      else
-         nil   
-    end
-  end
+ # def self.search_degree(search)
+ #   case search.downcase
+ #     when "telecos","telecomunicacions","telecomunicaciones"
+ #        "Telecomunicacions"
+ #     when "mates","matematiques","matemàtiques","matematicas","matemáticas"
+ #        "Matemàtiques"
+ #     when "informatica","informàtica","informática"
+ #        "Informàtica"
+ #     when "camins","caminos"
+ #        "Camins"
+ #     when "industrials","indus","industriales"
+ #        "Industrials"
+ #     else
+ #        nil   
+ #   end
+ # end
   
-  def self.search_degree_mote(search)
-    case search #busca per 'motes'
-      when "telecomat","telecomates"
-        ["Telecomunicacions","Matemàtiques"]
-      when "infomates","infomat"
-        ["Informàtica","Matemàtiques"]
-    end #no se m'acudeixen més!    
-  end
+ # def self.search_degree_mote(search)
+ #   case search #busca per 'motes'
+ #     when "telecomat","telecomates"
+ #       ["Telecomunicacions","Matemàtiques"]
+ #     when "infomates","infomat"
+ #       ["Informàtica","Matemàtiques"]
+ #   end #no se m'acudeixen més!    
+ # end
 
   def self.search(search)
     if search
