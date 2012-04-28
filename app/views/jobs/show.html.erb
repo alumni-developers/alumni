@@ -1,6 +1,7 @@
 <div class="span9 offset1 top-sep3">
 	<div class="span2">
 		<div class="sidebar-nav">
+		<!--%= link_to image_tag(gravatar_for(@user, :size => 160)), @user %-->
 		<%= gravatar_for @user,:size=>160 %>
 		<p></p>
 		<ul class="nav nav-list well">
@@ -15,22 +16,25 @@
 	</div>
 	<div class="span6">
 		<div class="span6">
-		<h1><%= @user.name %></h1>
+		<h1><%= link_to @user.name, @user %></h1>
 		</div>
 
 <%=@job.institution %> <%= @job.department%> <%= @job.position %>
 
+<!--
 <%=@job.s_date.strftime("Des del %m/%Y")%> <%=@job.e_date.strftime("Al %m/%Y")%>
+-->
+<%= s_date_long(@job) %><%= e_date_long (@job) %>
 
 <%=@job.city%>, (<%=@job.country%>)
 
 <%=@job.content%>
+
+<%= link_to "Torna a la pàgina de l'usuari #{@user.name}", @user %>
 
 		</div>
 	</div>
 </div>
 
 
-<!-- 
-<%= link_to "Veure perfil", @user.linkedin, :target => '_blank'%>
--->
+
