@@ -26,7 +26,11 @@
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane active" id="personal">
-				<%= render 'users/edit_personal' %>
+					<table class="table table-striped">
+						<tbody>
+						<%= render 'users/edit_personal' %>
+						</tbody>
+					</table>	
 				</div>
 				<div class="tab-pane" id="work">
 					<table class="table table-striped">
@@ -40,7 +44,7 @@
 				<div class="tab-pane" id="courses">
 					<table class="table table-striped">
 						<tbody>
-						<%= render @jobs %>
+						<%= render @courses %>
 						</tbody>
 					</table>	
 					<%= link_to "Afegir curs ", newcourse_path, :class=>"btn btn-success"  %>
@@ -49,7 +53,7 @@
 				<div class="tab-pane" id="abroad">
 					<table class="table table-striped">
 						<tbody>
-						<%= render @jobs %>
+						<%= render @abroad %>
 						</tbody>
 					</table>	
 					<%= link_to "Afegir estada a l'extranger", newabroad_path, :class=>"btn btn-success" %>

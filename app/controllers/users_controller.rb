@@ -46,6 +46,8 @@ class UsersController < ApplicationController
   def edit
     @user=User.find(params[ :id])
     @jobs = @user.jobs.find(:all, :conditions => ['job_type LIKE ?', "job"])
+    @courses = @user.jobs.find(:all, :conditions => ['job_type LIKE ?', "course"])
+    @abroad = @user.jobs.find(:all, :conditions => ['job_type LIKE ?', "abroad"])
     @title = "Editar usuari"
   end
 
