@@ -21,7 +21,7 @@
 			<ul class="nav nav-tabs">
 		  		<li class="active"><a href="#personal" data-toggle="tab">Personal</a></li>
 		  		<li><a href="#work" data-toggle="tab">Experiència Laboral</a></li>
-		 		<li><a href="#courses" data-toggle="tab">Cursos</a></li>
+		 		<li><a href="#courses" data-toggle="tab">Cursos i Formació</a></li>
 		 		<li><a href="#abroad" data-toggle="tab">Estades a l'estranger</a></li>
 			</ul>
 			<div class="tab-content">
@@ -31,9 +31,9 @@
 				<div class="tab-pane" id="work">
 					<% unless @jobs.empty? %>
 					<table class="table table-striped">
-							<tbody>
-	         				<%= render @jobs %>
-	         				</tbody>
+						<tbody>
+	         			<%= render @jobs %>
+	         			</tbody>
 					</table>
       				<% end %>
 				<% if current_user? @user %>	

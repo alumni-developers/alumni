@@ -2,8 +2,6 @@
     <div class="span8 offset2">
     <h2>Afegir nou treball</h2>
     
-    
-
 	<%= form_for(@job, :url => {:action=>"createjob", :class=>"form-horizontal"}) do |f| %>
 	    <%= render 'shared/error_messages', :object=>f.object %>
 	  <div class="field">
@@ -18,8 +16,6 @@
 	    <%= f.label :Posició %>
 	    <%= f.text_field :position %><br />
 	  </div>  
-	  
-	  
 	  <div class="field">
 	    <%= f.check_box :current_job %> Es la teva feina actual?<br />
 	    <p></p>
