@@ -27,14 +27,15 @@
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane active" id="personal">
-					<%= form_for(@user, :html=>{:class=>"form-horizontal"}) do |f| %>
+				<%= render @jobs %>
+
+				<%= form_for(@user, :html=>{:class=>"form-horizontal"}) do |f| %>
 				    <!--TODO Error messages with Twitter Bootsrap falvour -->
 				    <%= render 'shared/error_messages', :object => f.object %>
 			      	<fieldset>
 			         
 			         <!--TODO can the name be changed? -->
-			         
-			                  
+			         			                  
 			         <div class="control-group">
 			             <label class="control-label" for="input01">e-mail</label>
 			             <div class="controls">
@@ -247,7 +248,6 @@
 </div>
   
 >>>>>>> 0cd0e196851fd5ec87d72712609c9fd2d28f7684
-
 			</div>
 		</div>
 	</div>

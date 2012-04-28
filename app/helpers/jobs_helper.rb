@@ -10,5 +10,26 @@ module JobsHelper
 		{:job_title => "d'estada a l'estranger"}
      end
   end
+  
+  def date_format (month)
+     if month.nil?
+	"%Y"
+     else
+	"%m/%Y"
+     end
+  end  
+
+  def e_date (job)
+     if job.current_job==1
+	"Avui"
+     else
+ 	job.e_date.strftime(date_format(job.e_month))
+     end
+  end
+
+  def s_date(job)
+     job.s_date.strftime(date_format(job.s_month))
+  end
+
 end
-#title, institution, department, position, current_job
+
