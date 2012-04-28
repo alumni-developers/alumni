@@ -22,7 +22,7 @@
 #  current_location   :string(255)
 #
 
-# encoding: UTF-8
+# encoding: utf-8
 
 require 'digest'
 
