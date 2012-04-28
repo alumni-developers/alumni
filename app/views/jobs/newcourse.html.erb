@@ -2,27 +2,28 @@
     <div class="span8 offset2">
     <h2>Afegir nou curs</h2>
 
+
 	<%= form_for(@job, :url => {:action=>"createcourse"}) do |f| %>
 	    <%= render 'shared/error_messages', :object=>f.object %>
 	  <div class="field">
-	    <%= f.label :Institució_que_impartia %>
+	    <%= f.label "Institució que l'impartia" %>
 	    <%= f.text_field :institution %><br />
 	  </div>
 	  <div class="field">
-	    <%= f.label :departament %>
+	    <%= f.label "Nom del curs" %>
 	    <%= f.text_field :department %><br />
 	  </div>  
 	  <div class="field">
-	    <%= f.label :tipus_curs %>
+	    <%= f.label "Tipus de curs (màster, doctorat...)" %>
 	    <%= f.text_field :position %><br />
 	  </div>  
 	  <div class="field">
-	    <%= f.label :curs_actual %>
+	    <%= f.label "Cursant-lo actualment" %>
 	    <%= f.check_box :current_job %><br />
 	  </div>           
-	 <%=render 'jobs/s_date_form' %>
 	 <%=render 'jobs/e_date_form' %>
-	  <div class="field">
+	 <%=render 'jobs/s_date_form' %>
+	   <div class="field">
 	    <%= f.label :país %>
 	    <%= f.text_field :country %><br />
 	  </div>
@@ -35,9 +36,10 @@
 	    <%= f.text_field :content %><br />
 	  </div>
 	  <div class="actions">
-	    <%= f.submit "Create it" %>
+	    <%= f.submit "Crear" %>
 	  </div>
-	<% end %>
+	  <% end %>
+		<%= link_to "Cancelar", current_user, :class=>"btn btn-small" %>
 	</div>
 </div>
 
