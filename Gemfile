@@ -10,7 +10,8 @@ gem 'annotate','2.4.0'
 gem 'gravatar_image_tag','1.0.0.pre2'
 gem 'faker','0.3.1'
 gem 'will_paginate', '3.0.3'
-gem "jquery-rails"
+gem 'jquery-rails'
+gem 'rack-ssl', :require => 'rack/ssl'
 
 #gem 'will_paginate-bootstrap'
 
