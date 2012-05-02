@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # == Schema Information
 #
 # Table name: users
@@ -81,31 +83,31 @@ class User < ActiveRecord::Base
     end
   end
 
- # def self.search_degree(search)
- #   case search.downcase
- #     when "telecos","telecomunicacions","telecomunicaciones"
- #        "Telecomunicacions"
- #     when "mates","matematiques","matemàtiques","matematicas","matemáticas"
- #        "Matemàtiques"
- #     when "informatica","informàtica","informática"
- #        "Informàtica"
- #     when "camins","caminos"
- #        "Camins"
- #     when "industrials","indus","industriales"
- #        "Industrials"
- #     else
- #        nil   
- #   end
- # end
+  def self.search_degree(search)
+    case search.downcase
+      when "telecos","telecomunicacions","telecomunicaciones"
+         "Telecomunicacions"
+      when "mates","matematiques","matemàtiques","matematicas","matemáticas"
+         "Matemàtiques"
+      when "informatica","informàtica","informática"
+         "Informàtica"
+      when "camins","caminos"
+         "Camins"
+      when "industrials","indus","industriales"
+         "Industrials"
+      else
+         nil   
+    end
+  end
   
- # def self.search_degree_mote(search)
- #   case search #busca per 'motes'
- #     when "telecomat","telecomates"
- #       ["Telecomunicacions","Matemàtiques"]
- #     when "infomates","infomat"
- #       ["Informàtica","Matemàtiques"]
- #   end #no se m'acudeixen més!    
- # end
+  def self.search_degree_mote(search)
+    case search #busca per 'motes'
+      when "telecomat","telecomates"
+        ["Telecomunicacions","Matemàtiques"]
+      when "infomates","infomat"
+        ["Informàtica","Matemàtiques"]
+    end #no se m'acudeixen més!    
+  end
 
   def self.search(search)
     if search

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="span8 offset2">
-	<% text_job = job_title(@job)%>
+	<% text_job = job_text(@job)%>
 	<h2>Edita una entrada <%= text_job[:job_title]%></h2>
 	
 	<%= form_for(@job) do |f| %>
