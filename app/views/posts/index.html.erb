@@ -20,7 +20,7 @@
 			</div>
 			<div class="news">
 				<strong>Primera trobada</strong>
-				<p><em>15 de Març de 2013</em></p>
+				<p><em>25 de Novembre de 2011</em></p>
 			</div>
 		</div>
 		<% @posts.each do |post| %>
@@ -30,8 +30,8 @@
 					<a href="#" class="btn btn-primary btn-small">Editar</a>
 					<a href="#" class="btn btn-inverse btn-small">Eliminar</a>
 				<%end%>
-				<h6><a href="#">Ramon de les Olives</a></h6>
-				<p><em>23 de maig de 2012</em></p>
+				<h6><a href="#"><%= post.user_id %></a></h6>
+				<p><em><%= post.updated_at %></em></p>
 				<%= post.content %>
 			</div>
 		<%end%>
