@@ -6,7 +6,11 @@
 		<em><%=job.position%></em><br />
 			
 		<div id="<%= job.id%>" class="collapse"> <br />
-			<%= job.content %><p></p>
+			<% if not job.content.empty? %>	
+				<%= job.content %><p></p>
+			<% else %>
+				No s'han proporcionat detalls. <p></p>
+			<% end %>
 		</div>
 	</td>
 	<td>

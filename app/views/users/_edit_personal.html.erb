@@ -11,20 +11,23 @@
          	<%= f.text_field :email, :class=> "input-xlarge" %>           
          </div>
      </div>
-     <!--TODO Not making password compulsory to change--> 
-     <div class="control-group">
-         <label class="control-label" for="input01">Contrasenya</label>
-         <div class="controls">
-         	<%= f.password_field :password, :class=>"input-clarge" %>
-         </div>
-     </div>
      
-     <div class="control-group">
-         <label class="control-label" for="input01">Confirmació</label>
-         <div class="controls">
-         	<%= f.password_field :password_confirmation, :class=>"input-clarge" %>
-         </div>
-     </div>
+
+	     <div class="control-group">
+	         <label class="control-label" for="input01">Nova Contrasenya</label>
+	         <p class="help-block">Deixar en blanc si no es vol modificar</p>
+	         <div class="controls">
+	         	<%= f.password_field :password, :class=>"input-clarge" %>
+	         </div>
+	     </div>
+     
+	     <div class="control-group">
+	         <label class="control-label" for="input01">Confirmació</label>
+	         <div class="controls">
+	         	<%= f.password_field :password_confirmation, :class=>"input-clarge" %>
+	         </div>
+	     </div>
+
      
      <div class="control-group">
          <label class="control-label" for="select01">Carrera 1</label>
